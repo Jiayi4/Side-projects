@@ -1,0 +1,1123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BSNL Website Style Directions</title>
+  <style>
+    :root {
+      --navy: #061a2b;
+      --navy-2: #08243a;
+      --blue: #126da3;
+      --blue-soft: #e8f4fb;
+      --orange: #f08a24;
+      --orange-soft: #fff1e3;
+      --green: #2f8f6b;
+      --violet: #7657a8;
+      --ink: #10202f;
+      --muted: #657687;
+      --line: #d8e3ea;
+      --paper: #f7fafc;
+      --white: #ffffff;
+      --shadow: 0 18px 46px rgba(8, 50, 79, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.45;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    p {
+      margin-top: 0;
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .intro {
+      padding: 44px 0 34px;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .kicker::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 14px 0 0 var(--blue), 28px 0 0 var(--green);
+    }
+
+    h1 {
+      max-width: 900px;
+      margin-bottom: 18px;
+      font-size: 60px;
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 760px;
+      margin-bottom: 24px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .palette {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .swatch {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 40px;
+      padding: 8px 12px;
+      border: 1px solid rgba(16, 32, 47, 0.1);
+      border-radius: 8px;
+      background: #fff;
+      color: #3f5162;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--color);
+    }
+
+    .direction {
+      padding: 52px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .direction-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 390px);
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      font-size: 42px;
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .direction-copy {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .brief {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: #445667;
+      font-size: 13px;
+      box-shadow: 0 10px 24px rgba(8, 50, 79, 0.05);
+    }
+
+    .brief strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--ink);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .mock {
+      overflow: hidden;
+      border: 1px solid rgba(16, 32, 47, 0.12);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 68px;
+      padding: 0 28px;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 150px;
+      color: var(--navy-2);
+      font-weight: 900;
+    }
+
+    .mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background:
+        radial-gradient(circle at 32% 32%, #fff 0 12%, transparent 13%),
+        radial-gradient(circle at 70% 68%, #fff 0 12%, transparent 13%),
+        linear-gradient(135deg, var(--orange), var(--blue));
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      color: #34495a;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .button,
+    .button-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .button {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    .button.blue {
+      background: var(--blue);
+    }
+
+    .button-outline {
+      border: 1px solid currentColor;
+      color: var(--navy-2);
+    }
+
+    .direction-a .mock {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .direction-a .nav {
+      border-bottom-color: rgba(255, 255, 255, 0.14);
+      background: var(--navy);
+    }
+
+    .direction-a .brand,
+    .direction-a .nav-links,
+    .direction-a .button-outline {
+      color: #fff;
+    }
+
+    .premium-hero {
+      min-height: 560px;
+      padding: 72px 36px 84px;
+      background-image:
+        linear-gradient(135deg, rgba(240, 138, 36, 0.28) 0%, rgba(18, 109, 163, 0.18) 34%, rgba(6, 26, 43, 0) 62%),
+        linear-gradient(90deg, rgba(6, 26, 43, 0.96) 0%, rgba(6, 26, 43, 0.78) 48%, rgba(6, 26, 43, 0.2) 100%),
+        url("https://images.unsplash.com/photo-1581093458791-9d42cc20580c?auto=format&fit=crop&w=1600&q=80");
+      background-position: center;
+      background-size: cover;
+    }
+
+    .premium-copy {
+      max-width: 760px;
+    }
+
+    .premium-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      color: #ffbd75;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .premium-label::before {
+      content: "";
+      width: 38px;
+      height: 2px;
+      background: var(--orange);
+    }
+
+    .premium-hero h3,
+    .hero-b h3 {
+      margin-bottom: 18px;
+      font-size: 58px;
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .premium-hero h3 {
+      max-width: 780px;
+      color: #fff;
+      font-size: 72px;
+    }
+
+    .premium-hero p {
+      max-width: 640px;
+      margin-bottom: 28px;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 18px;
+    }
+
+    .premium-meta,
+    .hero-actions,
+    .program-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .premium-meta {
+      margin-bottom: 30px;
+    }
+
+    .chip,
+    .program-tab {
+      padding: 8px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .chip {
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.08);
+      color: #dcecf6;
+    }
+
+    .premium-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      background: var(--navy);
+    }
+
+    .premium-stat {
+      min-height: 128px;
+      padding: 24px 28px;
+      border-right: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .premium-stat:last-child {
+      border-right: 0;
+    }
+
+    .premium-stat strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #ffbd75;
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    .premium-stat span {
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 13px;
+    }
+
+    .signature {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(340px, 1.08fr);
+      gap: 22px;
+      padding: 28px;
+      background: #0a2840;
+    }
+
+    .signature-copy {
+      padding: 20px 4px 20px 0;
+    }
+
+    .signature-copy h4 {
+      margin-bottom: 14px;
+      color: #fff;
+      font-size: 32px;
+      line-height: 1.05;
+    }
+
+    .signature-copy p {
+      max-width: 520px;
+      margin-bottom: 24px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .signature-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .signature-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 13px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.13);
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .signature-item span {
+      color: #ffbd75;
+    }
+
+    .signature-image {
+      min-height: 360px;
+      border-radius: 8px;
+      background-image:
+        linear-gradient(180deg, rgba(7, 31, 51, 0.02), rgba(7, 31, 51, 0.48)),
+        url("https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?auto=format&fit=crop&w=1100&q=80");
+      background-position: center;
+      background-size: cover;
+    }
+
+    .hero-b {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(340px, 440px);
+      gap: 26px;
+      padding: 46px 28px 28px;
+      background: #fff;
+    }
+
+    .hero-b .kicker {
+      color: #a85006;
+    }
+
+    .hero-b .kicker::before {
+      background: var(--blue);
+      box-shadow: 14px 0 0 var(--orange), 28px 0 0 var(--violet);
+    }
+
+    .hero-b h3 {
+      color: var(--navy-2);
+    }
+
+    .hero-b p {
+      max-width: 620px;
+      margin-bottom: 24px;
+      color: #526577;
+      font-size: 17px;
+    }
+
+    .program-tabs {
+      margin-bottom: 28px;
+    }
+
+    .program-tab {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: #3b4e60;
+    }
+
+    .program-tab.active {
+      border-color: var(--orange);
+      background: var(--orange-soft);
+      color: #a85006;
+    }
+
+    .event-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(255, 241, 227, 0.68), rgba(232, 244, 251, 0.82)),
+        #fff;
+    }
+
+    .event-visual {
+      min-height: 230px;
+      border-bottom: 1px solid var(--line);
+      border-radius: 8px 8px 0 0;
+      background-image:
+        linear-gradient(180deg, rgba(8, 50, 79, 0.02), rgba(8, 50, 79, 0.55)),
+        url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .event-content {
+      padding: 18px;
+    }
+
+    .event-date {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+      color: var(--navy-2);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .event-date span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--orange);
+      color: #fff;
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .mini-item {
+      display: grid;
+      grid-template-columns: 38px minmax(0, 1fr);
+      gap: 10px;
+      align-items: center;
+      padding: 10px;
+      border: 1px solid rgba(16, 32, 47, 0.08);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .mini-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .mini-item:nth-child(2) .mini-icon {
+      background: var(--orange);
+    }
+
+    .mini-item:nth-child(3) .mini-icon {
+      background: var(--green);
+    }
+
+    .mini-item strong {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--navy-2);
+      font-size: 13px;
+    }
+
+    .mini-item span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .benefit-section,
+    .news-section {
+      padding: 0 28px 30px;
+      background: #fff;
+    }
+
+    .section-title-row {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 16px;
+    }
+
+    .section-title-row h4 {
+      margin-bottom: 0;
+      color: var(--navy-2);
+      font-size: 25px;
+      line-height: 1.1;
+    }
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .benefit-card,
+    .news-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .benefit-card {
+      min-height: 178px;
+      padding: 18px;
+    }
+
+    .index {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      margin-bottom: 18px;
+      border-radius: 50%;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .benefit-card:nth-child(2) .index {
+      background: var(--orange-soft);
+      color: #b85b08;
+    }
+
+    .benefit-card:nth-child(3) .index {
+      background: #edf8f3;
+      color: var(--green);
+    }
+
+    .benefit-card:nth-child(4) .index {
+      background: #f2edf8;
+      color: var(--violet);
+    }
+
+    .benefit-card h4,
+    .news-card h4 {
+      margin-bottom: 8px;
+      font-size: 18px;
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .benefit-card p,
+    .news-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .events-strip {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 14px;
+      padding: 0 28px 32px;
+      background: #fff;
+    }
+
+    .featured-event,
+    .story-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .featured-event {
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 16px;
+      padding: 12px;
+      background: var(--navy-2);
+      color: #fff;
+    }
+
+    .featured-image {
+      min-height: 210px;
+      border-radius: 8px;
+      background-image:
+        linear-gradient(180deg, rgba(8, 50, 79, 0.02), rgba(8, 50, 79, 0.42)),
+        url("https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?auto=format&fit=crop&w=900&q=80");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .featured-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 10px 8px 10px 0;
+    }
+
+    .featured-event p,
+    .featured-event .meta {
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .tag {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 14px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: var(--orange-soft);
+      color: #a85006;
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .story-card {
+      display: grid;
+      align-content: space-between;
+      min-height: 236px;
+      padding: 20px;
+      background:
+        linear-gradient(135deg, rgba(232, 244, 251, 0.72), rgba(255, 241, 227, 0.72)),
+        #fff;
+    }
+
+    .quote {
+      color: var(--navy-2);
+      font-size: 22px;
+      line-height: 1.12;
+      font-weight: 900;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .news-card {
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 18px;
+    }
+
+    .news-card:nth-child(1) {
+      background:
+        linear-gradient(180deg, rgba(232, 244, 251, 0.78), rgba(255, 255, 255, 0.94)),
+        #fff;
+    }
+
+    .news-card:nth-child(2) {
+      background:
+        linear-gradient(180deg, rgba(255, 241, 227, 0.72), rgba(255, 255, 255, 0.94)),
+        #fff;
+    }
+
+    .news-card:nth-child(3) {
+      background:
+        linear-gradient(180deg, rgba(237, 248, 243, 0.78), rgba(255, 255, 255, 0.94)),
+        #fff;
+    }
+
+    .news-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      color: #516475;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    footer {
+      padding: 24px 0 44px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 980px) {
+      h1 {
+        font-size: 44px;
+      }
+
+      .direction-head,
+      .hero-b,
+      .events-strip,
+      .signature,
+      .premium-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .premium-stat {
+        border-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .benefit-grid,
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .premium-hero h3 {
+        font-size: 56px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .shell {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .intro,
+      .direction {
+        padding-top: 34px;
+      }
+
+      h1 {
+        font-size: 38px;
+      }
+
+      h2 {
+        font-size: 32px;
+      }
+
+      .lead {
+        font-size: 16px;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 18px;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+
+      .premium-hero,
+      .hero-b,
+      .signature,
+      .benefit-section,
+      .news-section,
+      .events-strip {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .premium-hero {
+        min-height: 0;
+        padding-top: 54px;
+        padding-bottom: 58px;
+      }
+
+      .premium-hero h3,
+      .hero-b h3 {
+        font-size: 40px;
+      }
+
+      .featured-event {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-copy {
+        padding: 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="intro">
+    <div class="shell">
+      <div class="kicker">BSNL web directions</div>
+      <h1>Two distinct visual routes for the new BSNL website.</h1>
+      <p class="lead">One premium and institutional. One clean, event-forward, and practical.</p>
+      <div class="palette" aria-label="BSNL palette">
+        <div class="swatch"><span class="dot" style="--color:#08324f"></span>Deep blue</div>
+        <div class="swatch"><span class="dot" style="--color:#126da3"></span>BSNL blue</div>
+        <div class="swatch"><span class="dot" style="--color:#f08a24"></span>Orange</div>
+        <div class="swatch"><span class="dot" style="--color:#2f8f6b"></span>Science green</div>
+        <div class="swatch"><span class="dot" style="--color:#7657a8"></span>Forum violet</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="direction direction-a">
+      <div class="shell">
+        <div class="direction-head">
+          <div>
+            <div class="kicker">Direction 01</div>
+            <h2>Flagship Scientific Forum</h2>
+            <p class="direction-copy">
+              A more premium route for BSNL's institutional face, flagship events, sponsors, alumni stories, and industry partnerships.
+            </p>
+          </div>
+          <div class="brief">
+            <strong>Style brief</strong>
+            Deep navy, cinematic science imagery, sparse text, orange highlights, and sponsor-ready event storytelling.
+          </div>
+        </div>
+
+        <div class="mock">
+          <nav class="nav">
+            <div class="brand"><div class="mark"></div>BioScience Network Lausanne</div>
+            <div class="nav-links">
+              <a href="#">Flagship Events</a>
+              <a href="#">Industry</a>
+              <a href="#">Alumni</a>
+              <a href="#">Partners</a>
+            </div>
+            <a class="button" href="#">Partner with us</a>
+          </nav>
+
+          <section class="premium-hero">
+            <div class="premium-copy">
+              <div class="premium-label">Lausanne life science network</div>
+              <h3>Where research, industry, and future careers meet.</h3>
+              <p>
+                A refined identity for BSNL's most visible moments: career forums, industrial research events,
+                company partnerships, and alumni conversations.
+              </p>
+              <div class="premium-meta">
+                <span class="chip">LSCD</span>
+                <span class="chip">Faces of Industrial Research</span>
+                <span class="chip">Industry Partners</span>
+              </div>
+              <div class="hero-actions">
+                <a class="button" href="#">Explore flagship events</a>
+                <a class="button-outline" href="#">For partners</a>
+              </div>
+            </div>
+          </section>
+
+          <section class="premium-stats" aria-label="Premium positioning">
+            <article class="premium-stat">
+              <strong>EPFL + UNIL</strong>
+              <span>A cross-campus life science community in Lausanne.</span>
+            </article>
+            <article class="premium-stat">
+              <strong>Industry</strong>
+              <span>Partnerships, visits, speakers, and career conversations.</span>
+            </article>
+            <article class="premium-stat">
+              <strong>Flagship</strong>
+              <span>Higher-production pages for LSCD, FIR, and sponsor visibility.</span>
+            </article>
+          </section>
+
+          <section class="signature">
+            <div class="signature-copy">
+              <h4>Designed for moments that need authority.</h4>
+              <p>
+                This direction gives BSNL a stronger institutional presence when presenting large events,
+                partners, and alumni stories.
+              </p>
+              <div class="signature-list">
+                <div class="signature-item">Life Science Career Day <span>Career forum</span></div>
+                <div class="signature-item">Faces of Industrial Research <span>Symposium</span></div>
+                <div class="signature-item">Partner and sponsor pages <span>Institutional</span></div>
+              </div>
+            </div>
+            <div class="signature-image" aria-label="Flagship event image"></div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="direction direction-b">
+      <div class="shell">
+        <div class="direction-head">
+          <div>
+            <div class="kicker">Direction 02</div>
+            <h2>Community Calendar Hub</h2>
+            <p class="direction-copy">
+              A clean homepage route focused on upcoming events, program tracks, member benefits, and event reports.
+            </p>
+          </div>
+          <div class="brief">
+            <strong>Style brief</strong>
+            White space, blue navigation, orange registration accents, clear cards, latest reports, and strong mobile scanning.
+          </div>
+        </div>
+
+        <div class="mock">
+          <nav class="nav">
+            <div class="brand"><div class="mark"></div>BSNL</div>
+            <div class="nav-links">
+              <a href="#">Events</a>
+              <a href="#">Tracks</a>
+              <a href="#">News</a>
+              <a href="#">Reports</a>
+            </div>
+            <a class="button blue" href="#">Next event</a>
+          </nav>
+
+          <section class="hero-b">
+            <div>
+              <div class="kicker">Career development for life scientists</div>
+              <h3>Turn research life into a wider professional network.</h3>
+              <p>
+                A practical event hub for PhD students and postdocs: meet alumni, visit companies,
+                learn transferable skills, and understand career paths in life sciences.
+              </p>
+              <div class="program-tabs">
+                <span class="program-tab active">Upcoming</span>
+                <span class="program-tab">Biotech Chats</span>
+                <span class="program-tab">Workshops</span>
+                <span class="program-tab">Company Visits</span>
+              </div>
+              <div class="hero-actions">
+                <a class="button" href="#">Register for an event</a>
+                <a class="button-outline" href="#">Read event reports</a>
+              </div>
+            </div>
+
+            <aside class="event-panel" aria-label="BSNL next event panel">
+              <div class="event-visual"></div>
+              <div class="event-content">
+                <div class="event-date">Next BSNL session <span>Open</span></div>
+                <h4>Career Paths in Life Sciences</h4>
+                <p>Roundtable format with alumni, industry guests, and practical discussion for early-career researchers.</p>
+                <div class="mini-list">
+                  <div class="mini-item">
+                    <span class="mini-icon">01</span>
+                    <div><strong>Meet speakers</strong><span>Alumni and industry professionals</span></div>
+                  </div>
+                  <div class="mini-item">
+                    <span class="mini-icon">02</span>
+                    <div><strong>Ask real questions</strong><span>Informal, small-group format</span></div>
+                  </div>
+                  <div class="mini-item">
+                    <span class="mini-icon">03</span>
+                    <div><strong>Build your network</strong><span>Follow-up contacts and community links</span></div>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </section>
+
+          <section class="benefit-section">
+            <div class="section-title-row">
+              <h4>What members get</h4>
+              <a class="button-outline" href="#">All programs</a>
+            </div>
+            <div class="benefit-grid">
+              <article class="benefit-card">
+                <span class="index">01</span>
+                <h4>Career clarity</h4>
+                <p>Compare academic, startup, pharma, consulting, and policy paths with people who made the move.</p>
+              </article>
+              <article class="benefit-card">
+                <span class="index">02</span>
+                <h4>Industry access</h4>
+                <p>Reach companies and professionals through curated events instead of cold outreach.</p>
+              </article>
+              <article class="benefit-card">
+                <span class="index">03</span>
+                <h4>Transferable skills</h4>
+                <p>Practice communication, project management, interviewing, and leadership in focused workshops.</p>
+              </article>
+              <article class="benefit-card">
+                <span class="index">04</span>
+                <h4>Peer community</h4>
+                <p>Stay connected with researchers across EPFL, UNIL, alumni networks, and local life science groups.</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="events-strip">
+            <article class="featured-event">
+              <div class="featured-image"></div>
+              <div class="featured-copy">
+                <div>
+                  <div class="tag">Featured event</div>
+                  <h4>Life Science Career Day</h4>
+                  <p>BSNL's flagship career event for connecting young researchers with companies and alumni.</p>
+                </div>
+                <div class="meta">Career forum | Lausanne life science ecosystem</div>
+              </div>
+            </article>
+            <article class="story-card">
+              <div>
+                <div class="tag">Event story</div>
+                <div class="quote">The useful part continues after the event.</div>
+              </div>
+              <p>Use recaps to share key takeaways, speaker highlights, photos, and follow-up resources for people who could not attend.</p>
+            </article>
+          </section>
+
+          <section class="news-section">
+            <div class="section-title-row">
+              <h4>Latest event reports</h4>
+              <a class="button-outline" href="#">All news</a>
+            </div>
+            <div class="news-grid">
+              <article class="news-card">
+                <div>
+                  <div class="tag">Report</div>
+                  <h4>Biotech Chat: moving from PhD to product teams</h4>
+                  <p>Key points from a small-group discussion with alumni working across biotech strategy and product development.</p>
+                </div>
+                <div class="news-meta"><span>Biotech Chats</span><span>4 min read</span></div>
+              </article>
+              <article class="news-card">
+                <div>
+                  <div class="tag">Recap</div>
+                  <h4>Workshop takeaways: communicating science beyond academia</h4>
+                  <p>A concise summary of tools, exercises, and examples from the latest BSNL skills workshop.</p>
+                </div>
+                <div class="news-meta"><span>Workshops</span><span>Resources</span></div>
+              </article>
+              <article class="news-card">
+                <div>
+                  <div class="tag">Highlights</div>
+                  <h4>Company visit highlights from the Lausanne biotech ecosystem</h4>
+                  <p>Photos, context, and practical career insights from a recent company visit with BSNL members.</p>
+                </div>
+                <div class="news-meta"><span>Company Visits</span><span>Gallery</span></div>
+              </article>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">BSNL website style directions.</div>
+  </footer>
+</body>
+</html>
