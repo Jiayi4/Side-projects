@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BSNL Website Style Directions</title>
+  <title>BioScience Network Lausanne</title>
   <style>
     :root {
       --navy: #061a2b;
@@ -31,7 +31,7 @@
       color: var(--ink);
       background: var(--paper);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.45;
+      line-height: 1.5;
     }
 
     a {
@@ -53,18 +53,33 @@
     }
 
     .intro {
-      padding: 44px 0 34px;
+      padding: 48px 0 46px;
       border-bottom: 1px solid var(--line);
       background: #fff;
+    }
+
+    .intro-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 360px;
+      gap: 46px;
+      align-items: center;
+    }
+
+    .intro-logo {
+      width: 100%;
+      max-width: 360px;
+      height: auto;
+      justify-self: end;
+      object-fit: contain;
     }
 
     .kicker {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 14px;
+      margin-bottom: 13px;
       color: var(--blue);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 900;
       letter-spacing: 0;
       text-transform: uppercase;
@@ -72,18 +87,21 @@
 
     .kicker::before {
       content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--orange);
-      box-shadow: 14px 0 0 var(--blue), 28px 0 0 var(--green);
+      flex: 0 0 32px;
+      width: 32px;
+      height: 7px;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 3.5px 50%, var(--orange) 0 3.5px, transparent 4px),
+        radial-gradient(circle at 16px 50%, var(--blue) 0 3.5px, transparent 4px),
+        radial-gradient(circle at 28.5px 50%, var(--green) 0 3.5px, transparent 4px);
     }
 
     h1 {
       max-width: 900px;
       margin-bottom: 18px;
-      font-size: 60px;
-      line-height: 0.98;
+      font-size: 54px;
+      line-height: 1.04;
       letter-spacing: 0;
     }
 
@@ -91,7 +109,7 @@
       max-width: 760px;
       margin-bottom: 24px;
       color: var(--muted);
-      font-size: 18px;
+      font-size: 17px;
     }
 
     .palette {
@@ -123,7 +141,7 @@
     }
 
     .direction {
-      padding: 52px 0;
+      padding: 48px 0;
       border-bottom: 1px solid var(--line);
     }
 
@@ -137,15 +155,15 @@
 
     h2 {
       margin-bottom: 10px;
-      font-size: 42px;
-      line-height: 1.05;
+      font-size: 38px;
+      line-height: 1.08;
       letter-spacing: 0;
     }
 
     .direction-copy {
       max-width: 720px;
       color: var(--muted);
-      font-size: 16px;
+      font-size: 15px;
     }
 
     .brief {
@@ -154,7 +172,7 @@
       border-radius: 8px;
       background: #fff;
       color: #445667;
-      font-size: 13px;
+      font-size: 12.5px;
       box-shadow: 0 10px 24px rgba(8, 50, 79, 0.05);
     }
 
@@ -162,7 +180,7 @@
       display: block;
       margin-bottom: 8px;
       color: var(--ink);
-      font-size: 12px;
+      font-size: 11px;
       text-transform: uppercase;
     }
 
@@ -178,9 +196,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
-      min-height: 68px;
-      padding: 0 28px;
+      gap: 22px;
+      min-height: 92px;
+      padding: 0 28px 0 20px;
       border-bottom: 1px solid var(--line);
       background: #fff;
     }
@@ -188,29 +206,88 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
-      min-width: 150px;
+      gap: 12px;
+      min-width: 190px;
       color: var(--navy-2);
       font-weight: 900;
     }
 
-    .mark {
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
-      background:
-        radial-gradient(circle at 32% 32%, #fff 0 12%, transparent 13%),
-        radial-gradient(circle at 70% 68%, #fff 0 12%, transparent 13%),
-        linear-gradient(135deg, var(--orange), var(--blue));
+    .nav-logo {
+      width: 170px;
+      height: 84px;
+      flex: 0 0 170px;
+      display: block;
+      object-fit: cover;
+      object-position: center 54%;
     }
 
     .nav-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 18px;
+      gap: 22px;
       color: #34495a;
-      font-size: 13px;
+      font-size: 13.2px;
       font-weight: 800;
+    }
+
+    .nav-links a.active {
+      color: var(--blue);
+    }
+
+    .nav-tools {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      min-width: 150px;
+    }
+
+    .search-form {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      position: relative;
+    }
+
+    .search-input {
+      width: 0;
+      min-width: 0;
+      height: 36px;
+      padding: 0;
+      border: 0;
+      border-bottom: 1px solid transparent;
+      background: transparent;
+      color: var(--navy-2);
+      font: inherit;
+      opacity: 0;
+      outline: none;
+      transition: width 160ms ease, opacity 160ms ease, border-color 160ms ease, padding 160ms ease;
+    }
+
+    .search-form.is-open .search-input,
+    .search-form:focus-within .search-input {
+      width: 150px;
+      padding: 0 4px;
+      border-color: rgba(8, 36, 58, 0.24);
+      opacity: 1;
+    }
+
+    .search-button {
+      width: 38px;
+      height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      background: transparent;
+      color: var(--navy-2);
+      cursor: pointer;
+    }
+
+    .search-icon {
+      width: 26px;
+      height: 26px;
+      display: block;
     }
 
     .button,
@@ -218,10 +295,10 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 42px;
-      padding: 0 16px;
+      min-height: 40px;
+      padding: 0 15px;
       border-radius: 8px;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 900;
       white-space: nowrap;
     }
@@ -246,28 +323,71 @@
     }
 
     .direction-a .nav {
-      border-bottom-color: rgba(255, 255, 255, 0.14);
+      border-bottom-color: rgba(255, 255, 255, 0.12);
       background: var(--navy);
     }
 
     .direction-a .brand,
     .direction-a .nav-links,
+    .direction-a .search-button,
     .direction-a .button-outline {
       color: #fff;
     }
 
+    .direction-a .search-input {
+      color: #fff;
+    }
+
+    .direction-a .search-form.is-open .search-input,
+    .direction-a .search-form:focus-within .search-input {
+      border-color: rgba(255, 255, 255, 0.34);
+    }
+
     .premium-hero {
-      min-height: 560px;
-      padding: 72px 36px 84px;
-      background-image:
-        linear-gradient(135deg, rgba(240, 138, 36, 0.28) 0%, rgba(18, 109, 163, 0.18) 34%, rgba(6, 26, 43, 0) 62%),
-        linear-gradient(90deg, rgba(6, 26, 43, 0.96) 0%, rgba(6, 26, 43, 0.78) 48%, rgba(6, 26, 43, 0.2) 100%),
-        url("https://images.unsplash.com/photo-1581093458791-9d42cc20580c?auto=format&fit=crop&w=1600&q=80");
-      background-position: center;
-      background-size: cover;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      min-height: 530px;
+      padding: 66px 36px 78px;
+      background:
+        linear-gradient(270deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.065) 16%, rgba(255, 255, 255, 0.018) 38%, rgba(255, 255, 255, 0) 62%),
+        radial-gradient(ellipse at 96% 40%, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.075) 24%, rgba(255, 255, 255, 0.018) 48%, rgba(255, 255, 255, 0) 70%),
+        radial-gradient(circle at 15% 14%, rgba(240, 138, 36, 0.11) 0%, rgba(240, 138, 36, 0.035) 28%, rgba(240, 138, 36, 0) 52%),
+        linear-gradient(145deg, #041521 0%, #08263d 48%, #061a2b 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 -90px 120px rgba(0, 0, 0, 0.18);
+    }
+
+    .premium-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(270deg, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.07) 18%, rgba(255, 255, 255, 0.025) 44%, rgba(255, 255, 255, 0) 68%);
+      opacity: 0.48;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .premium-hero::after {
+      content: "";
+      position: absolute;
+      top: -8%;
+      right: -18%;
+      width: 48%;
+      height: 106%;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.075) 34%, rgba(255, 255, 255, 0.018) 60%, rgba(255, 255, 255, 0) 78%);
+      filter: blur(24px);
+      opacity: 0.5;
+      pointer-events: none;
+      z-index: 0;
     }
 
     .premium-copy {
+      position: relative;
+      z-index: 1;
       max-width: 760px;
     }
 
@@ -275,9 +395,9 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
       color: #ffbd75;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 900;
       text-transform: uppercase;
     }
@@ -292,22 +412,22 @@
     .premium-hero h3,
     .hero-b h3 {
       margin-bottom: 18px;
-      font-size: 58px;
-      line-height: 0.98;
+      font-size: 54px;
+      line-height: 1.02;
       letter-spacing: 0;
     }
 
     .premium-hero h3 {
       max-width: 780px;
       color: #fff;
-      font-size: 72px;
+      font-size: 64px;
     }
 
     .premium-hero p {
       max-width: 640px;
       margin-bottom: 28px;
       color: rgba(255, 255, 255, 0.78);
-      font-size: 18px;
+      font-size: 17px;
     }
 
     .premium-meta,
@@ -324,16 +444,17 @@
 
     .chip,
     .program-tab {
-      padding: 8px 11px;
+      padding: 7px 10px;
       border-radius: 999px;
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 900;
     }
 
     .chip {
       border: 1px solid rgba(255, 255, 255, 0.18);
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.1);
       color: #dcecf6;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 10px 24px rgba(0, 0, 0, 0.08);
     }
 
     .premium-stats {
@@ -358,13 +479,13 @@
       display: block;
       margin-bottom: 8px;
       color: #ffbd75;
-      font-size: 30px;
+      font-size: 28px;
       line-height: 1;
     }
 
     .premium-stat span {
       color: rgba(255, 255, 255, 0.68);
-      font-size: 13px;
+      font-size: 12.5px;
     }
 
     .signature {
@@ -382,14 +503,15 @@
     .signature-copy h4 {
       margin-bottom: 14px;
       color: #fff;
-      font-size: 32px;
-      line-height: 1.05;
+      font-size: 30px;
+      line-height: 1.08;
     }
 
     .signature-copy p {
       max-width: 520px;
       margin-bottom: 24px;
       color: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
     }
 
     .signature-list {
@@ -405,7 +527,7 @@
       padding: 13px 0;
       border-top: 1px solid rgba(255, 255, 255, 0.13);
       color: rgba(255, 255, 255, 0.86);
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 900;
     }
 
@@ -427,8 +549,10 @@
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(340px, 440px);
       gap: 26px;
-      padding: 46px 28px 28px;
-      background: #fff;
+      padding: 44px 28px 28px;
+      background:
+        radial-gradient(circle at 78% 8%, rgba(18, 109, 163, 0.12), rgba(18, 109, 163, 0) 32%),
+        linear-gradient(180deg, #f7fbfe 0%, #eef6fb 100%);
     }
 
     .hero-b .kicker {
@@ -436,19 +560,22 @@
     }
 
     .hero-b .kicker::before {
-      background: var(--blue);
-      box-shadow: 14px 0 0 var(--orange), 28px 0 0 var(--violet);
+      background:
+        radial-gradient(circle at 3.5px 50%, var(--blue) 0 3.5px, transparent 4px),
+        radial-gradient(circle at 16px 50%, var(--orange) 0 3.5px, transparent 4px),
+        radial-gradient(circle at 28.5px 50%, var(--violet) 0 3.5px, transparent 4px);
+      box-shadow: none;
     }
 
     .hero-b h3 {
       color: var(--navy-2);
     }
 
-    .hero-b p {
+    .hero-b > div > p {
       max-width: 620px;
       margin-bottom: 24px;
       color: #526577;
-      font-size: 17px;
+      font-size: 16px;
     }
 
     .program-tabs {
@@ -471,12 +598,13 @@
       border: 1px solid var(--line);
       border-radius: 8px;
       background:
-        linear-gradient(180deg, rgba(255, 241, 227, 0.68), rgba(232, 244, 251, 0.82)),
+        linear-gradient(180deg, rgba(255, 241, 227, 0.78), rgba(232, 244, 251, 0.92)),
         #fff;
+      box-shadow: 0 16px 34px rgba(8, 50, 79, 0.08);
     }
 
     .event-visual {
-      min-height: 230px;
+      min-height: 220px;
       border-bottom: 1px solid var(--line);
       border-radius: 8px 8px 0 0;
       background-image:
@@ -487,7 +615,7 @@
     }
 
     .event-content {
-      padding: 18px;
+      padding: 18px 20px 20px;
     }
 
     .event-date {
@@ -495,9 +623,9 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       color: var(--navy-2);
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 900;
     }
 
@@ -506,8 +634,22 @@
       border-radius: 999px;
       background: var(--orange);
       color: #fff;
-      font-size: 11px;
+      font-size: 10.5px;
       text-transform: uppercase;
+    }
+
+    .event-content h4 {
+      margin-bottom: 12px;
+      color: var(--navy-2);
+      font-size: 18px;
+      line-height: 1.2;
+    }
+
+    .event-content p {
+      margin-bottom: 0;
+      color: #526577;
+      font-size: 14px;
+      line-height: 1.48;
     }
 
     .mini-list {
@@ -560,10 +702,25 @@
       font-size: 12px;
     }
 
+    .event-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .event-action {
+      min-height: 42px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 900;
+    }
+
     .benefit-section,
     .news-section {
       padding: 0 28px 30px;
-      background: #fff;
+      background:
+        linear-gradient(180deg, #eef6fb 0%, #f7fbfe 100%);
     }
 
     .section-title-row {
@@ -577,7 +734,7 @@
     .section-title-row h4 {
       margin-bottom: 0;
       color: var(--navy-2);
-      font-size: 25px;
+      font-size: 23px;
       line-height: 1.1;
     }
 
@@ -591,25 +748,26 @@
     .news-card {
       border: 1px solid var(--line);
       border-radius: 8px;
-      background: #fff;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 10px 24px rgba(8, 50, 79, 0.04);
     }
 
     .benefit-card {
-      min-height: 178px;
-      padding: 18px;
+      min-height: 168px;
+      padding: 17px;
     }
 
     .index {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 32px;
-      height: 32px;
-      margin-bottom: 18px;
+      width: 30px;
+      height: 30px;
+      margin-bottom: 16px;
       border-radius: 50%;
       background: var(--blue-soft);
       color: var(--blue);
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 900;
     }
 
@@ -631,7 +789,7 @@
     .benefit-card h4,
     .news-card h4 {
       margin-bottom: 8px;
-      font-size: 18px;
+      font-size: 17px;
       line-height: 1.12;
       letter-spacing: 0;
     }
@@ -640,7 +798,7 @@
     .news-card p {
       margin-bottom: 0;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 12.8px;
     }
 
     .events-strip {
@@ -648,7 +806,7 @@
       grid-template-columns: 1.15fr 0.85fr;
       gap: 14px;
       padding: 0 28px 32px;
-      background: #fff;
+      background: #f7fbfe;
     }
 
     .featured-event,
@@ -681,7 +839,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 10px 8px 10px 0;
+      padding: 10px 10px 10px 0;
     }
 
     .featured-event p,
@@ -697,7 +855,7 @@
       border-radius: 999px;
       background: var(--orange-soft);
       color: #a85006;
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 900;
       text-transform: uppercase;
     }
@@ -714,7 +872,7 @@
 
     .quote {
       color: var(--navy-2);
-      font-size: 22px;
+      font-size: 20px;
       line-height: 1.12;
       font-weight: 900;
     }
@@ -726,11 +884,11 @@
     }
 
     .news-card {
-      min-height: 210px;
+      min-height: 198px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 18px;
+      padding: 17px;
     }
 
     .news-card:nth-child(1) {
@@ -757,7 +915,7 @@
       justify-content: space-between;
       gap: 10px;
       color: #516475;
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 800;
     }
 
@@ -773,11 +931,17 @@
       }
 
       .direction-head,
+      .intro-inner,
       .hero-b,
       .events-strip,
       .signature,
       .premium-stats {
         grid-template-columns: 1fr;
+      }
+
+      .intro-logo {
+        max-width: 240px;
+        justify-self: start;
       }
 
       .premium-stat {
@@ -823,8 +987,29 @@
         padding: 18px;
       }
 
+      .brand {
+        min-width: 0;
+      }
+
+      .nav-logo {
+        width: 160px;
+        height: 82px;
+        flex-basis: 160px;
+      }
+
       .nav-links {
         gap: 12px;
+      }
+
+      .nav-tools {
+        min-width: 0;
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .search-form.is-open .search-input,
+      .search-form:focus-within .search-input {
+        width: min(230px, calc(100vw - 108px));
       }
 
       .premium-hero,
@@ -861,15 +1046,15 @@
 <body>
   <header class="intro">
     <div class="shell">
-      <div class="kicker">BSNL web directions</div>
-      <h1>Two distinct visual routes for the new BSNL website.</h1>
-      <p class="lead">One premium and institutional. One clean, event-forward, and practical.</p>
-      <div class="palette" aria-label="BSNL palette">
-        <div class="swatch"><span class="dot" style="--color:#08324f"></span>Deep blue</div>
-        <div class="swatch"><span class="dot" style="--color:#126da3"></span>BSNL blue</div>
-        <div class="swatch"><span class="dot" style="--color:#f08a24"></span>Orange</div>
-        <div class="swatch"><span class="dot" style="--color:#2f8f6b"></span>Science green</div>
-        <div class="swatch"><span class="dot" style="--color:#7657a8"></span>Forum violet</div>
+      <div class="intro-inner">
+        <div>
+          <div class="kicker">BSNL visual exploration</div>
+          <h1>Two demo directions for the new BSNL website.</h1>
+          <p class="lead">
+            These are draft layouts to compare possible visual directions. The content inside each mockup is aligned with BSNL's real mission, events, and audience.
+          </p>
+        </div>
+        <img class="intro-logo" src="BSNL_logo_website/BSNL_logo_website/logo/BSNL_logo_bo_Main.svg" alt="BioScience Network Lausanne logo">
       </div>
     </div>
   </header>
@@ -887,68 +1072,80 @@
           </div>
           <div class="brief">
             <strong>Style brief</strong>
-            Deep navy, cinematic science imagery, sparse text, orange highlights, and sponsor-ready event storytelling.
+            Deep navy, refined light gradients, sparse text, orange highlights, and sponsor-ready event storytelling.
           </div>
         </div>
 
         <div class="mock">
           <nav class="nav">
-            <div class="brand"><div class="mark"></div>BioScience Network Lausanne</div>
-            <div class="nav-links">
-              <a href="#">Flagship Events</a>
-              <a href="#">Industry</a>
-              <a href="#">Alumni</a>
-              <a href="#">Partners</a>
+            <div class="brand">
+              <img class="nav-logo" src="BSNL_logo_website/BSNL_logo_website/logo/BSNL_logo_bo_Main_reverse.svg" alt="BioScience Network Lausanne">
             </div>
-            <a class="button" href="#">Partner with us</a>
+            <div class="nav-links">
+              <a href="#">About Us</a>
+              <a class="active" href="#">Events</a>
+              <a href="#">Alumni</a>
+              <a href="#">Contact</a>
+            </div>
+            <div class="nav-tools">
+              <form class="search-form" role="search">
+                <input class="search-input" type="search" placeholder="Search BSNL" aria-label="Search BSNL">
+                <button class="search-button" type="button" aria-label="Open search">
+                  <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="11" cy="11" r="7.5" fill="none" stroke="currentColor" stroke-width="1.65"></circle>
+                    <path d="M16.5 16.5 21 21" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round"></path>
+                  </svg>
+                </button>
+              </form>
+            </div>
           </nav>
 
           <section class="premium-hero">
             <div class="premium-copy">
-              <div class="premium-label">Lausanne life science network</div>
-              <h3>Where research, industry, and future careers meet.</h3>
+              <div class="premium-label">EPFL + UNIL life sciences</div>
+              <h3>Career development for young researchers in Life Sciences.</h3>
               <p>
-                A refined identity for BSNL's most visible moments: career forums, industrial research events,
-                company partnerships, and alumni conversations.
+                We help PhD students and Postdocs explore career paths, meet professionals,
+                and bridge the gap between academia, industry, and society.
               </p>
               <div class="premium-meta">
-                <span class="chip">LSCD</span>
+                <span class="chip">Life Science Career Day</span>
                 <span class="chip">Faces of Industrial Research</span>
-                <span class="chip">Industry Partners</span>
+                <span class="chip">FameLab Switzerland</span>
               </div>
               <div class="hero-actions">
-                <a class="button" href="#">Explore flagship events</a>
-                <a class="button-outline" href="#">For partners</a>
+                <a class="button" href="#">See our events</a>
+                <a class="button-outline" href="#">Contact BSNL</a>
               </div>
             </div>
           </section>
 
-          <section class="premium-stats" aria-label="Premium positioning">
+          <section class="premium-stats" aria-label="BSNL mission">
             <article class="premium-stat">
               <strong>EPFL + UNIL</strong>
-              <span>A cross-campus life science community in Lausanne.</span>
+              <span>An association of PhD students and Postdocs in Life Sciences.</span>
             </article>
             <article class="premium-stat">
-              <strong>Industry</strong>
-              <span>Partnerships, visits, speakers, and career conversations.</span>
+              <strong>Careers</strong>
+              <span>Events to explore opportunities and prepare for the next step.</span>
             </article>
             <article class="premium-stat">
-              <strong>Flagship</strong>
-              <span>Higher-production pages for LSCD, FIR, and sponsor visibility.</span>
+              <strong>Network</strong>
+              <span>Connections with peers, alumni, companies, and research communities.</span>
             </article>
           </section>
 
           <section class="signature">
             <div class="signature-copy">
-              <h4>Designed for moments that need authority.</h4>
+              <h4>Our main events</h4>
               <p>
-                This direction gives BSNL a stronger institutional presence when presenting large events,
-                partners, and alumni stories.
+                BSNL organizes career fairs, scientific symposia, science communication events,
+                expert roundtables, workshops, and company visits.
               </p>
               <div class="signature-list">
-                <div class="signature-item">Life Science Career Day <span>Career forum</span></div>
+                <div class="signature-item">Life Science Career Day <span>Career fair</span></div>
                 <div class="signature-item">Faces of Industrial Research <span>Symposium</span></div>
-                <div class="signature-item">Partner and sponsor pages <span>Institutional</span></div>
+                <div class="signature-item">FameLab Switzerland <span>Science communication</span></div>
               </div>
             </div>
             <div class="signature-image" aria-label="Flagship event image"></div>
@@ -975,55 +1172,57 @@
 
         <div class="mock">
           <nav class="nav">
-            <div class="brand"><div class="mark"></div>BSNL</div>
-            <div class="nav-links">
-              <a href="#">Events</a>
-              <a href="#">Tracks</a>
-              <a href="#">News</a>
-              <a href="#">Reports</a>
+            <div class="brand">
+              <img class="nav-logo" src="BSNL_logo_website/BSNL_logo_website/logo/BSNL_logo_bo_Main.svg" alt="BioScience Network Lausanne">
             </div>
-            <a class="button blue" href="#">Next event</a>
+            <div class="nav-links">
+              <a href="#">About Us</a>
+              <a class="active" href="#">Events</a>
+              <a href="#">News</a>
+              <a href="#">Contact</a>
+            </div>
+            <div class="nav-tools">
+              <form class="search-form" role="search">
+                <input class="search-input" type="search" placeholder="Search BSNL" aria-label="Search BSNL">
+                <button class="search-button" type="button" aria-label="Open search">
+                  <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="11" cy="11" r="7.5" fill="none" stroke="currentColor" stroke-width="1.65"></circle>
+                    <path d="M16.5 16.5 21 21" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round"></path>
+                  </svg>
+                </button>
+              </form>
+            </div>
           </nav>
 
           <section class="hero-b">
             <div>
-              <div class="kicker">Career development for life scientists</div>
-              <h3>Turn research life into a wider professional network.</h3>
+              <div class="kicker">For PhD students and Postdocs</div>
+              <h3>Network, get inspired and find your ideal career path.</h3>
               <p>
-                A practical event hub for PhD students and postdocs: meet alumni, visit companies,
-                learn transferable skills, and understand career paths in life sciences.
+                BSNL promotes career development for young researchers in Life Sciences
+                through events, workshops, company visits, and informal discussions with professionals.
               </p>
               <div class="program-tabs">
-                <span class="program-tab active">Upcoming</span>
+                <span class="program-tab active">Upcoming events</span>
                 <span class="program-tab">Biotech Chats</span>
                 <span class="program-tab">Workshops</span>
                 <span class="program-tab">Company Visits</span>
               </div>
               <div class="hero-actions">
-                <a class="button" href="#">Register for an event</a>
-                <a class="button-outline" href="#">Read event reports</a>
+                <a class="button" href="#">See upcoming events</a>
+                <a class="button-outline" href="#">Read BSNL news</a>
               </div>
             </div>
 
             <aside class="event-panel" aria-label="BSNL next event panel">
               <div class="event-visual"></div>
               <div class="event-content">
-                <div class="event-date">Next BSNL session <span>Open</span></div>
-                <h4>Career Paths in Life Sciences</h4>
-                <p>Roundtable format with alumni, industry guests, and practical discussion for early-career researchers.</p>
-                <div class="mini-list">
-                  <div class="mini-item">
-                    <span class="mini-icon">01</span>
-                    <div><strong>Meet speakers</strong><span>Alumni and industry professionals</span></div>
-                  </div>
-                  <div class="mini-item">
-                    <span class="mini-icon">02</span>
-                    <div><strong>Ask real questions</strong><span>Informal, small-group format</span></div>
-                  </div>
-                  <div class="mini-item">
-                    <span class="mini-icon">03</span>
-                    <div><strong>Build your network</strong><span>Follow-up contacts and community links</span></div>
-                  </div>
+                <div class="event-date">Featured BSNL event <span>Event</span></div>
+                <h4>Biotech Chat: Project Management in Life Sciences</h4>
+                <p>Roundtables with experts and peers on career paths, industry roles, and professional skills in life sciences.</p>
+                <div class="event-actions">
+                  <a class="button-outline event-action" href="#">Learn more</a>
+                  <a class="button event-action" href="#">Register</a>
                 </div>
               </div>
             </aside>
@@ -1031,29 +1230,29 @@
 
           <section class="benefit-section">
             <div class="section-title-row">
-              <h4>What members get</h4>
+              <h4>Explore with BSNL</h4>
               <a class="button-outline" href="#">All programs</a>
             </div>
             <div class="benefit-grid">
               <article class="benefit-card">
                 <span class="index">01</span>
-                <h4>Career clarity</h4>
-                <p>Compare academic, startup, pharma, consulting, and policy paths with people who made the move.</p>
+                <h4>Career opportunities</h4>
+                <p>Discover career paths in industry, academia, communication, consulting, and other organizations.</p>
               </article>
               <article class="benefit-card">
                 <span class="index">02</span>
-                <h4>Industry access</h4>
-                <p>Reach companies and professionals through curated events instead of cold outreach.</p>
+                <h4>New skills</h4>
+                <p>Acquire hard and soft skills through training sessions and workshops with qualified coaches.</p>
               </article>
               <article class="benefit-card">
                 <span class="index">03</span>
-                <h4>Transferable skills</h4>
-                <p>Practice communication, project management, interviewing, and leadership in focused workshops.</p>
+                <h4>Professional network</h4>
+                <p>Meet peers, alumni, speakers, and companies active in life sciences and healthcare.</p>
               </article>
               <article class="benefit-card">
                 <span class="index">04</span>
-                <h4>Peer community</h4>
-                <p>Stay connected with researchers across EPFL, UNIL, alumni networks, and local life science groups.</p>
+                <h4>Industry insight</h4>
+                <p>Join company visits and events that give direct insight into pharma and biotech research.</p>
               </article>
             </div>
           </section>
@@ -1065,49 +1264,49 @@
                 <div>
                   <div class="tag">Featured event</div>
                   <h4>Life Science Career Day</h4>
-                  <p>BSNL's flagship career event for connecting young researchers with companies and alumni.</p>
+                  <p>The biggest Life Science career fair in the Romandie, co-organized with UNIL.</p>
                 </div>
-                <div class="meta">Career forum | Lausanne life science ecosystem</div>
+                <div class="meta">LSCD | Career fair</div>
               </div>
             </article>
             <article class="story-card">
               <div>
-                <div class="tag">Event story</div>
-                <div class="quote">The useful part continues after the event.</div>
+                <div class="tag">BSNL News</div>
+                <div class="quote">Follow event updates and reports from BSNL.</div>
               </div>
-              <p>Use recaps to share key takeaways, speaker highlights, photos, and follow-up resources for people who could not attend.</p>
+              <p>Read updates from Biotech Chats, workshops, company visits, flagship events, alumni activities, and the BSNL team.</p>
             </article>
           </section>
 
           <section class="news-section">
             <div class="section-title-row">
-              <h4>Latest event reports</h4>
+              <h4>Latest news and updates</h4>
               <a class="button-outline" href="#">All news</a>
             </div>
             <div class="news-grid">
               <article class="news-card">
                 <div>
                   <div class="tag">Report</div>
-                  <h4>Biotech Chat: moving from PhD to product teams</h4>
-                  <p>Key points from a small-group discussion with alumni working across biotech strategy and product development.</p>
+                  <h4>Biotech Chat: Project Management in Life Sciences</h4>
+                  <p>Roundtables with experts and peers on project management and career development in life sciences.</p>
                 </div>
                 <div class="news-meta"><span>Biotech Chats</span><span>4 min read</span></div>
               </article>
               <article class="news-card">
                 <div>
                   <div class="tag">Recap</div>
-                  <h4>Workshop takeaways: communicating science beyond academia</h4>
-                  <p>A concise summary of tools, exercises, and examples from the latest BSNL skills workshop.</p>
+                  <h4>Beyond the Bench: Building a Meaningful Career in Life Sciences</h4>
+                  <p>A BSNL workshop on career development, professional choices, and skills beyond research.</p>
                 </div>
                 <div class="news-meta"><span>Workshops</span><span>Resources</span></div>
               </article>
               <article class="news-card">
                 <div>
                   <div class="tag">Highlights</div>
-                  <h4>Company visit highlights from the Lausanne biotech ecosystem</h4>
-                  <p>Photos, context, and practical career insights from a recent company visit with BSNL members.</p>
+                  <h4>Faces of Industrial Research 2026 registration now open</h4>
+                  <p>A symposium connecting academia and industrial research in life science and healthcare.</p>
                 </div>
-                <div class="news-meta"><span>Company Visits</span><span>Gallery</span></div>
+                <div class="news-meta"><span>FIR</span><span>Registration</span></div>
               </article>
             </div>
           </section>
@@ -1117,7 +1316,30 @@
   </main>
 
   <footer>
-    <div class="shell">BSNL website style directions.</div>
+    <div class="shell">(c) BioScience Network Lausanne (BSNL) - info@bsnl.ch</div>
   </footer>
+  <script>
+    document.querySelectorAll(".search-form").forEach((form) => {
+      const input = form.querySelector(".search-input");
+      const button = form.querySelector(".search-button");
+
+      button.addEventListener("click", () => {
+        form.classList.add("is-open");
+        input.focus();
+      });
+
+      input.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          input.value = "";
+          form.classList.remove("is-open");
+          button.focus();
+        }
+      });
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+      });
+    });
+  </script>
 </body>
 </html>
