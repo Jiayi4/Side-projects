@@ -1,0 +1,1121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BSNL Website Redesign - Committee Slides</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #061a2b;
+      --navy-2: #08243a;
+      --blue: #126da3;
+      --blue-soft: #e8f4fb;
+      --orange: #f08a24;
+      --orange-soft: #fff1e3;
+      --green: #2f8f6b;
+      --ink: #10202f;
+      --muted: #657485;
+      --line: #d8e3ea;
+      --paper: #f7fbfe;
+      --white: #fff;
+      --chrome: #edf4f8;
+      --panel: rgba(255, 255, 255, 0.84);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      min-height: 100%;
+      background:
+        radial-gradient(circle at 12% 12%, rgba(18, 109, 163, 0.16), rgba(18, 109, 163, 0) 30%),
+        radial-gradient(circle at 88% 18%, rgba(240, 138, 36, 0.16), rgba(240, 138, 36, 0) 28%),
+        #dfeaf1;
+      color: var(--ink);
+      font-family: Inter, Arial, sans-serif;
+      line-height: 1.45;
+    }
+
+    body {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .deck {
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 22px;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 22px;
+      display: none;
+      overflow: hidden;
+      border: 1px solid rgba(8, 50, 79, 0.14);
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at 92% 8%, rgba(18, 109, 163, 0.09), rgba(18, 109, 163, 0) 26%),
+        linear-gradient(135deg, #f8fcff 0%, #eef6fb 100%);
+      box-shadow: 0 26px 76px rgba(8, 50, 79, 0.17);
+    }
+
+    .slide::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 4;
+      height: 40px;
+      border-bottom: 1px solid rgba(8, 50, 79, 0.1);
+      border-radius: 18px 18px 0 0;
+      background:
+        radial-gradient(circle at 24px 20px, #ff6b4a 0 4px, transparent 5px),
+        radial-gradient(circle at 42px 20px, #f5bd4f 0 4px, transparent 5px),
+        radial-gradient(circle at 60px 20px, #57c76f 0 4px, transparent 5px),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(244, 248, 251, 0.92));
+      pointer-events: none;
+    }
+
+    .slide.active {
+      display: block;
+      animation: slideIn 360ms ease both;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .slide-inner {
+      position: relative;
+      z-index: 5;
+      height: 100%;
+      padding: 78px 64px 54px;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .kicker::before {
+      content: "";
+      width: 30px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--orange);
+      box-shadow: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 920px;
+      margin-bottom: 26px;
+      color: var(--navy-2);
+      font-size: clamp(48px, 5.4vw, 78px);
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      max-width: 900px;
+      margin-bottom: 26px;
+      color: var(--navy-2);
+      font-size: clamp(34px, 4.1vw, 56px);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin-bottom: 12px;
+      color: var(--navy-2);
+      font-size: 24px;
+      line-height: 1.1;
+    }
+
+    .lead {
+      max-width: 820px;
+      color: var(--muted);
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .title-slide {
+      background:
+        radial-gradient(circle at 86% 12%, rgba(18, 109, 163, 0.16), rgba(18, 109, 163, 0) 30%),
+        linear-gradient(135deg, #eef6fb 0%, #fff 70%);
+    }
+
+    .title-meta {
+      position: absolute;
+      left: 64px;
+      right: 64px;
+      bottom: 48px;
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      color: #536678;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .brand-logo {
+      width: 180px;
+      height: auto;
+      margin-bottom: 38px;
+    }
+
+    .title-slide .brand-logo {
+      position: absolute;
+      top: 62px;
+      left: 64px;
+      width: 150px;
+      margin: 0;
+    }
+
+    .title-slide .brand-logo + .kicker {
+      margin-top: 112px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .card {
+      position: relative;
+      min-height: 210px;
+      padding: 26px;
+      border: 1px solid rgba(8, 50, 79, 0.1);
+      border-radius: 10px;
+      background: var(--panel);
+      box-shadow: 0 12px 30px rgba(8, 50, 79, 0.07);
+    }
+
+    .card strong {
+      display: block;
+      margin-bottom: 16px;
+      color: var(--orange);
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    .card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 17px;
+      font-weight: 500;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 42px;
+    }
+
+    .flow-step {
+      min-height: 224px;
+      padding: 22px;
+      border: 1px solid rgba(8, 50, 79, 0.11);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: 0 12px 28px rgba(8, 50, 79, 0.055);
+    }
+
+    .flow-step:last-child {
+      border-right: 1px solid rgba(8, 50, 79, 0.11);
+    }
+
+    .flow-step span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 24px;
+      margin-bottom: 24px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .flow-step h3 {
+      font-size: 22px;
+    }
+
+    .flow-step p {
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
+      gap: 34px;
+      height: calc(100% - 88px);
+      align-items: stretch;
+    }
+
+    .theme-points {
+      display: grid;
+      gap: 14px;
+      align-content: start;
+      margin-top: 28px;
+    }
+
+    .point {
+      padding: 16px 0;
+      border-top: 1px solid rgba(8, 50, 79, 0.1);
+    }
+
+    .point strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 17px;
+    }
+
+    .point span {
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .prototype-frame {
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+      padding-top: 34px;
+      border: 1px solid rgba(8, 50, 79, 0.12);
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 22px 58px rgba(8, 50, 79, 0.14);
+    }
+
+    .prototype-frame::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      height: 34px;
+      border-bottom: 1px solid rgba(8, 50, 79, 0.1);
+      background:
+        radial-gradient(circle at 18px 17px, #ff6b4a 0 3px, transparent 4px),
+        radial-gradient(circle at 32px 17px, #f5bd4f 0 3px, transparent 4px),
+        radial-gradient(circle at 46px 17px, #57c76f 0 3px, transparent 4px),
+        linear-gradient(180deg, #f8fbfd, var(--chrome));
+      pointer-events: none;
+    }
+
+    .prototype-frame::after {
+      content: attr(data-preview);
+      position: absolute;
+      top: 8px;
+      left: 66px;
+      right: 14px;
+      z-index: 3;
+      height: 18px;
+      padding: 0 12px;
+      border: 1px solid rgba(8, 50, 79, 0.08);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.66);
+      color: #718091;
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 18px;
+      text-transform: uppercase;
+      pointer-events: none;
+    }
+
+    .prototype-frame iframe {
+      position: absolute;
+      top: 34px;
+      left: 0;
+      width: 100%;
+      height: calc(100% - 34px);
+      border: 0;
+      background: #fff;
+    }
+
+    .dark-slide {
+      background:
+        radial-gradient(circle at 88% 10%, rgba(18, 109, 163, 0.11), rgba(18, 109, 163, 0) 28%),
+        linear-gradient(135deg, #f8fcff 0%, #eef6fb 100%);
+      color: var(--ink);
+    }
+
+    .dark-slide::before {
+      display: none;
+    }
+
+    .dark-slide h1,
+    .dark-slide h2,
+    .dark-slide h3,
+    .dark-slide .point strong {
+      color: var(--navy-2);
+    }
+
+    .dark-slide .lead,
+    .dark-slide .point span {
+      color: var(--muted);
+    }
+
+    .dark-slide .kicker {
+      color: var(--blue);
+    }
+
+    .dark-slide .prototype-frame {
+      border-color: rgba(8, 50, 79, 0.14);
+      background: #fff;
+      box-shadow: 0 22px 58px rgba(8, 50, 79, 0.14);
+    }
+
+    .compare-table {
+      display: grid;
+      grid-template-columns: 0.82fr 1fr 1fr;
+      margin-top: 32px;
+      padding: 6px 20px 4px;
+      border: 1px solid rgba(8, 50, 79, 0.1);
+      border-radius: 12px;
+      background: var(--panel);
+      box-shadow: 0 16px 40px rgba(8, 50, 79, 0.07);
+    }
+
+    .compare-table div {
+      padding: 18px 18px 18px 0;
+      border-bottom: 1px solid rgba(8, 50, 79, 0.12);
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .compare-table .head {
+      color: var(--navy-2);
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .compare-table .criterion {
+      color: var(--navy-2);
+      font-weight: 700;
+    }
+
+    .architecture {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 330px;
+      gap: 34px;
+      margin-top: 28px;
+      align-items: start;
+    }
+
+    .sitemap {
+      display: grid;
+      gap: 16px;
+    }
+
+    .node {
+      padding: 18px 20px;
+      border: 1px solid rgba(8, 50, 79, 0.12);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.78);
+      font-weight: 700;
+      box-shadow: 0 10px 22px rgba(8, 50, 79, 0.05);
+    }
+
+    .node small {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .node.home {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .node.home small {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .node-row {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .site-branch {
+      display: grid;
+      gap: 10px;
+    }
+
+    .site-branch ul {
+      display: grid;
+      gap: 7px;
+      min-height: 168px;
+      margin: 0;
+      padding: 12px 12px 14px;
+      border: 1px solid rgba(8, 50, 79, 0.09);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.58);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.35;
+      list-style: none;
+    }
+
+    .site-branch li::before {
+      content: "";
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      margin-right: 8px;
+      border-radius: 50%;
+      background: var(--orange);
+      vertical-align: 2px;
+    }
+
+    .site-branch.partnership .node {
+      border-color: rgba(240, 138, 36, 0.3);
+      background: var(--orange-soft);
+    }
+
+    .content-types {
+      padding: 22px;
+      border: 1px solid rgba(8, 50, 79, 0.12);
+      border-radius: 12px;
+      background: var(--panel);
+      box-shadow: 0 14px 34px rgba(8, 50, 79, 0.07);
+    }
+
+    .content-types h3 {
+      margin-bottom: 18px;
+    }
+
+    .content-types ul {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .timeline-card {
+      min-height: 230px;
+      padding: 24px;
+      border: 1px solid rgba(8, 50, 79, 0.1);
+      border-top: 2px solid var(--orange);
+      border-radius: 10px;
+      background: var(--panel);
+      box-shadow: 0 14px 34px rgba(8, 50, 79, 0.065);
+    }
+
+    .timeline-card span {
+      display: block;
+      margin-bottom: 28px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .timeline-card p {
+      color: var(--muted);
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .question-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .question {
+      min-height: 156px;
+      padding: 24px;
+      border: 1px solid rgba(8, 50, 79, 0.12);
+      border-radius: 10px;
+      background: var(--panel);
+      box-shadow: 0 14px 34px rgba(8, 50, 79, 0.065);
+    }
+
+    .question strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--orange);
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    .question p {
+      margin-bottom: 0;
+      color: var(--ink);
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .button-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 18px;
+      border-radius: 999px;
+      background: var(--orange);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 12px 24px rgba(240, 138, 36, 0.22);
+    }
+
+    .button-link.secondary {
+      border: 1px solid rgba(8, 50, 79, 0.2);
+      background: rgba(255, 255, 255, 0.64);
+      color: var(--ink);
+      box-shadow: none;
+    }
+
+    .nav {
+      position: fixed;
+      left: 50%;
+      bottom: 30px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transform: translateX(-50%);
+      padding: 8px 10px;
+      border: 1px solid rgba(8, 50, 79, 0.16);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.84);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 12px 28px rgba(8, 50, 79, 0.14);
+    }
+
+    .nav button {
+      width: 34px;
+      height: 34px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--navy);
+      color: #fff;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .counter {
+      min-width: 56px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .progress {
+      position: fixed;
+      left: 22px;
+      right: 22px;
+      bottom: 16px;
+      z-index: 9;
+      height: 3px;
+      border-radius: 999px;
+      background: rgba(8, 50, 79, 0.12);
+      overflow: hidden;
+    }
+
+    .progress span {
+      display: block;
+      width: 0;
+      height: 100%;
+      background: var(--orange);
+      transition: width 220ms ease;
+    }
+
+    @media (max-width: 900px) {
+      body {
+        overflow: auto;
+      }
+
+      .deck {
+        height: auto;
+        display: block;
+        padding: 0;
+      }
+
+      .slide {
+        position: relative;
+        inset: auto;
+        display: block;
+        min-height: 100vh;
+        margin: 0;
+        border-radius: 0;
+      }
+
+      .slide::after {
+        border-radius: 0;
+      }
+
+      .slide:not(.active) {
+        display: none;
+      }
+
+      .slide-inner {
+        padding: 76px 24px 92px;
+      }
+
+      .title-slide .brand-logo {
+        top: 58px;
+        left: 24px;
+      }
+
+      .grid-3,
+      .flow,
+      .split,
+      .architecture,
+      .node-row,
+      .timeline,
+      .question-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .prototype-frame {
+        min-height: 460px;
+      }
+    }
+
+    @media print {
+      body {
+        overflow: visible;
+        background: #fff;
+      }
+
+      .deck {
+        display: block;
+        height: auto;
+        padding: 0;
+      }
+
+      .slide,
+      .slide.active {
+        position: relative;
+        inset: auto;
+        display: block;
+        width: 100vw;
+        height: 56.25vw;
+        page-break-after: always;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .nav,
+      .slide::after,
+      .progress {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="deck">
+    <section class="slide title-slide active">
+      <div class="slide-inner">
+        <img class="brand-logo" src="BSNL_logo_website/BSNL_logo_website/logo/BSNL_logo_bo_Main_web.png" alt="BioScience Network Lausanne">
+        <div class="kicker">Committee review</div>
+        <h1>BSNL Website Redesign</h1>
+        <p class="lead">Homepage directions and content organization for a clearer, more maintainable BSNL website.</p>
+        <div class="title-meta">
+          <span>BioScience Network Lausanne</span>
+          <span>Homepage prototype + information architecture</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="kicker">Meeting goal</div>
+        <h2>What we need to decide</h2>
+        <p class="lead">The meeting should produce a direction we can turn into a WordPress theme and maintain with simple event and news updates.</p>
+        <div class="grid-3">
+          <article class="card">
+            <strong>Visual direction</strong>
+            <h3>Light community or premium scientific?</h3>
+            <p>Choose the tone that best represents BSNL to students, alumni, companies, and university stakeholders.</p>
+          </article>
+          <article class="card">
+            <strong>Homepage priorities</strong>
+            <h3>What should visitors see first?</h3>
+            <p>Clarify the order of mission, member value, upcoming events, highlights, and follow-up actions.</p>
+          </article>
+          <article class="card">
+            <strong>Maintenance model</strong>
+            <h3>Can nontechnical members update it?</h3>
+            <p>Use WordPress posts or custom content types for events, highlights, and team updates.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="kicker">Homepage strategy</div>
+        <h2>From identity to action</h2>
+        <p class="lead">The homepage should first explain why BSNL matters, then move visitors toward specific events and recent activity.</p>
+        <div class="flow">
+          <article class="flow-step">
+            <span>01</span>
+            <h3>Hero promise</h3>
+            <p>Network, get inspired and find your ideal career path.</p>
+          </article>
+          <article class="flow-step">
+            <span>02</span>
+            <h3>Explore</h3>
+            <p>Career opportunities, new skills, professional network, and industry insight.</p>
+          </article>
+          <article class="flow-step">
+            <span>03</span>
+            <h3>Upcoming events</h3>
+            <p>Countdown for the next BSNL session plus a compact calendar preview.</p>
+          </article>
+          <article class="flow-step">
+            <span>04</span>
+            <h3>Highlights</h3>
+            <p>Recent activity records and event recaps in a visual carousel.</p>
+          </article>
+          <article class="flow-step">
+            <span>05</span>
+            <h3>Follow</h3>
+            <p>Simple social links and institutional footer information.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="kicker">Direction 01</div>
+        <h2>Light Community Hub</h2>
+        <div class="split">
+          <div>
+            <p class="lead">A bright, accessible homepage direction focused on events, membership value, and frequent updates.</p>
+            <div class="theme-points">
+              <div class="point"><strong>Best fit</strong><span>Main BSNL homepage and regular event communications.</span></div>
+              <div class="point"><strong>Strength</strong><span>Clear, approachable, easier for visitors to scan quickly.</span></div>
+              <div class="point"><strong>Risk</strong><span>Needs strong images for highlights to avoid feeling too generic.</span></div>
+            </div>
+            <div class="link-row">
+              <a class="button-link" href="bsnl-style-directions-version3.html#light-community-hub" target="_blank">Open live prototype</a>
+            </div>
+          </div>
+          <div class="prototype-frame" data-preview="Light Community Hub prototype">
+            <iframe src="bsnl-style-directions-version3.html#light-community-hub" title="Light Community Hub prototype"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide dark-slide">
+      <div class="slide-inner">
+        <div class="kicker">Direction 02</div>
+        <h2>Premium Scientific Forum</h2>
+        <div class="split">
+          <div>
+            <p class="lead">A darker, glossier institutional direction with stronger presence for flagship moments.</p>
+            <div class="theme-points">
+              <div class="point"><strong>Best fit</strong><span>Flagship event pages, sponsor-facing pages, and a more formal homepage.</span></div>
+              <div class="point"><strong>Strength</strong><span>Feels more distinctive, premium, and partner-ready.</span></div>
+              <div class="point"><strong>Risk</strong><span>Could feel heavier if the homepage needs to be updated often with everyday events.</span></div>
+            </div>
+            <div class="link-row">
+              <a class="button-link" href="bsnl-style-directions-version3.html#premium-scientific-forum" target="_blank">Open live prototype</a>
+            </div>
+          </div>
+          <div class="prototype-frame" data-preview="Premium Scientific Forum prototype">
+            <iframe src="bsnl-style-directions-version3.html#premium-scientific-forum" title="Premium Scientific Forum prototype"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="kicker">Comparison</div>
+        <h2>How to evaluate the two themes</h2>
+        <div class="compare-table">
+          <div class="head">Criterion</div>
+          <div class="head">Light Community Hub</div>
+          <div class="head">Premium Scientific Forum</div>
+          <div class="criterion">First impression</div>
+          <div>Friendly, practical, student-facing.</div>
+          <div>Formal, polished, partner-facing.</div>
+          <div class="criterion">Event discovery</div>
+          <div>Very clear for regular updates and quick registration.</div>
+          <div>Strong for important sessions, less casual for smaller events.</div>
+          <div class="criterion">Brand presence</div>
+          <div>Subtle and accessible.</div>
+          <div>More memorable and institutional.</div>
+          <div class="criterion">Maintenance</div>
+          <div>Easier to keep consistent with mixed content quality.</div>
+          <div>Requires more image and copy discipline to stay premium.</div>
+          <div class="criterion">Recommended role</div>
+          <div>Main homepage direction.</div>
+          <div>Flagship event or sponsor-page direction.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="kicker">Information architecture</div>
+        <h2>Recommended site structure</h2>
+        <p class="lead">Build on the current BSNL navigation, while making News/Highlights and Partnership easier to find and maintain.</p>
+        <div class="architecture">
+          <div class="sitemap">
+            <div class="node home">Home <small>Mission, upcoming event, explore with BSNL, highlights, follow links.</small></div>
+            <div class="node-row">
+              <div class="site-branch">
+                <div class="node">About Us</div>
+                <ul>
+                  <li>Mission</li>
+                  <li>Our Team</li>
+                  <li>Alumni</li>
+                  <li>Recruitment</li>
+                  <li>BSNL Bylaws</li>
+                </ul>
+              </div>
+              <div class="site-branch">
+                <div class="node">Events</div>
+                <ul>
+                  <li>LSCD</li>
+                  <li>Faces of Industrial Research</li>
+                  <li>FameLab</li>
+                  <li>Biotech Chats</li>
+                  <li>Workshops</li>
+                  <li>Company Visits</li>
+                </ul>
+              </div>
+              <div class="site-branch">
+                <div class="node">News</div>
+                <ul>
+                  <li>Event highlights</li>
+                  <li>Announcements</li>
+                  <li>Recruitment updates</li>
+                  <li>Association news</li>
+                </ul>
+              </div>
+              <div class="site-branch partnership">
+                <div class="node">Partnership</div>
+                <ul>
+                  <li>For companies</li>
+                  <li>Sponsorship</li>
+                  <li>Company visits</li>
+                  <li>Speaker proposals</li>
+                  <li>Collaboration form</li>
+                </ul>
+              </div>
+              <div class="site-branch">
+                <div class="node">Contact</div>
+                <ul>
+                  <li>General contact</li>
+                  <li>Collaboration inquiry</li>
+                  <li>Social media</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <aside class="content-types">
+            <h3>Reusable content</h3>
+            <ul>
+              <li>Events: date, location, registration link, status.</li>
+              <li>News/Highlights: recap, images, category, related event.</li>
+              <li>Team and alumni: role, group, contact/social link.</li>
+              <li>Partnership: sponsor profile, visit proposal, event connection.</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="kicker">Maintenance model</div>
+        <h2>How updates should work after launch</h2>
+        <p class="lead">The design should not require committee members to edit page layouts for routine updates.</p>
+        <div class="timeline">
+          <article class="timeline-card">
+            <span>Events</span>
+            <p>Create a new event entry. Homepage automatically updates next session and calendar preview.</p>
+          </article>
+          <article class="timeline-card">
+            <span>Highlights</span>
+            <p>Publish an event recap or activity record. The highlights carousel updates from recent posts.</p>
+          </article>
+          <article class="timeline-card">
+            <span>Team</span>
+            <p>Update committee members from a structured team list rather than manually editing cards.</p>
+          </article>
+          <article class="timeline-card">
+            <span>Assets</span>
+            <p>Keep a shared image bank for event photography, partner logos, and recurring BSNL graphics.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="kicker">Committee discussion</div>
+        <h2>Questions for the meeting</h2>
+        <div class="question-grid">
+          <article class="question">
+            <strong>Visual direction</strong>
+            <p>Which direction should become the main homepage style?</p>
+          </article>
+          <article class="question">
+            <strong>Content priority</strong>
+            <p>Are upcoming events and highlights the right homepage focus?</p>
+          </article>
+          <article class="question">
+            <strong>Navigation</strong>
+            <p>Do we agree on Home, About Us, Events, News, Our Team, Contact?</p>
+          </article>
+          <article class="question">
+            <strong>Ownership</strong>
+            <p>Who will maintain events, highlights, and team information?</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide title-slide">
+      <div class="slide-inner">
+        <div class="kicker">Next steps</div>
+        <h2>From direction to WordPress theme</h2>
+        <p class="lead">After the committee selects a direction, the prototype can be converted into a WordPress theme with editable Events, News/Highlights, Team, and footer content.</p>
+        <div class="link-row">
+          <a class="button-link" href="bsnl-style-directions-version3.html" target="_blank">Open homepage prototype</a>
+          <a class="button-link secondary" href="bsnl-style-directions-version3.html#light-community-hub" target="_blank">Light direction</a>
+          <a class="button-link secondary" href="bsnl-style-directions-version3.html#premium-scientific-forum" target="_blank">Premium direction</a>
+        </div>
+        <div class="title-meta">
+          <span>&copy; 2026 BioScience Network Lausanne</span>
+          <span>EPFL &middot; UNIL &middot; Lausanne, Switzerland</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="nav" aria-label="Slide navigation">
+    <button type="button" data-prev aria-label="Previous slide">&#8249;</button>
+    <div class="counter"><span data-current>1</span>/<span data-total>10</span></div>
+    <button type="button" data-next aria-label="Next slide">&#8250;</button>
+  </div>
+  <div class="progress"><span data-progress></span></div>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const current = document.querySelector("[data-current]");
+    const total = document.querySelector("[data-total]");
+    const progress = document.querySelector("[data-progress]");
+    let active = 0;
+
+    total.textContent = slides.length;
+
+    function show(index) {
+      active = Math.max(0, Math.min(slides.length - 1, index));
+      slides.forEach((slide, slideIndex) => {
+        slide.classList.toggle("active", slideIndex === active);
+      });
+      current.textContent = active + 1;
+      progress.style.width = ((active + 1) / slides.length * 100) + "%";
+      history.replaceState(null, "", "#slide-" + (active + 1));
+    }
+
+    function fromHash() {
+      const match = location.hash.match(/slide-(\d+)/);
+      if (match) show(Number(match[1]) - 1);
+    }
+
+    document.querySelector("[data-prev]").addEventListener("click", () => show(active - 1));
+    document.querySelector("[data-next]").addEventListener("click", () => show(active + 1));
+
+    document.addEventListener("keydown", (event) => {
+      if (["ArrowRight", "PageDown", " "].includes(event.key)) {
+        event.preventDefault();
+        show(active + 1);
+      }
+      if (["ArrowLeft", "PageUp"].includes(event.key)) {
+        event.preventDefault();
+        show(active - 1);
+      }
+      if (event.key === "Home") show(0);
+      if (event.key === "End") show(slides.length - 1);
+    });
+
+    fromHash();
+    show(active);
+  </script>
+</body>
+</html>
