@@ -183,13 +183,20 @@
       position: absolute;
       left: 64px;
       right: 64px;
-      bottom: 48px;
+      bottom: 40px;
       display: flex;
       justify-content: space-between;
       gap: 24px;
       color: #536678;
       font-size: 14px;
       font-weight: 600;
+    }
+
+    .title-author {
+      margin-top: 0;
+      color: var(--blue);
+      font-size: 17px;
+      font-weight: 700;
     }
 
     .brand-logo {
@@ -200,14 +207,22 @@
 
     .title-slide .brand-logo {
       position: absolute;
-      top: 62px;
+      top: 4px;
       left: 64px;
-      width: 150px;
+      width: 142px;
       margin: 0;
     }
 
     .title-slide .brand-logo + .kicker {
-      margin-top: 112px;
+      margin-top: 84px;
+      margin-bottom: 14px;
+    }
+
+    .title-slide h1 {
+      max-width: 780px;
+      margin-bottom: 10px;
+      font-size: clamp(50px, 5.7vw, 78px);
+      line-height: 0.98;
     }
 
     .grid-3 {
@@ -240,6 +255,315 @@
       color: var(--muted);
       font-size: 17px;
       font-weight: 500;
+    }
+
+    .decision-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      max-width: none;
+      gap: 26px;
+      margin-top: 48px;
+    }
+
+    .decision-grid .card {
+      display: grid;
+      align-content: space-between;
+      min-height: 320px;
+      padding: 34px;
+    }
+
+    .decision-grid .card h3 {
+      max-width: 520px;
+      font-size: 42px;
+      line-height: 1;
+    }
+
+    .decision-grid .card::after {
+      content: "";
+      display: block;
+      height: 86px;
+      border-radius: 10px;
+      background:
+        radial-gradient(circle at 18% 45%, rgba(240, 138, 36, 0.2), transparent 34%),
+        linear-gradient(135deg, rgba(18, 109, 163, 0.16), rgba(232, 244, 251, 0.72));
+    }
+
+    .theme-spec-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.68fr) minmax(440px, 1fr);
+      gap: 34px;
+      height: calc(100% - 88px);
+      align-items: stretch;
+    }
+
+    .theme-spec-panel,
+    .style-board {
+      padding: 28px;
+      border: 1px solid rgba(8, 50, 79, 0.1);
+      border-radius: 12px;
+      background: var(--panel);
+      box-shadow: 0 18px 44px rgba(8, 50, 79, 0.08);
+    }
+
+    .theme-summary {
+      display: grid;
+      align-content: start;
+      gap: 24px;
+    }
+
+    .theme-summary .button-link {
+      justify-self: start;
+    }
+
+    .spec-label {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .font-sample {
+      margin-bottom: 30px;
+      color: var(--navy-2);
+      font-size: 52px;
+      font-weight: 700;
+      line-height: 0.95;
+    }
+
+    .font-sample span {
+      display: block;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 17px;
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .swatch {
+      overflow: hidden;
+      min-height: 118px;
+      border: 1px solid rgba(8, 50, 79, 0.09);
+      border-radius: 10px;
+      background: #fff;
+    }
+
+    .swatch-color {
+      height: 58px;
+    }
+
+    .swatch-text {
+      padding: 12px 14px;
+    }
+
+    .swatch strong,
+    .swatch span {
+      display: block;
+    }
+
+    .swatch strong {
+      margin-bottom: 4px;
+      color: var(--navy-2);
+      font-size: 13px;
+    }
+
+    .swatch span {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .theme-spec-panel.dark-spec {
+      border-color: rgba(255, 255, 255, 0.08);
+      background:
+        radial-gradient(circle at 94% 10%, rgba(255, 255, 255, 0.14), transparent 28%),
+        #071d2d;
+      color: #fff;
+    }
+
+    .dark-spec .spec-label {
+      color: #ffb467;
+    }
+
+    .dark-spec .font-sample,
+    .dark-spec .swatch strong {
+      color: #fff;
+    }
+
+    .dark-spec .font-sample span,
+    .dark-spec .swatch span {
+      color: rgba(255, 255, 255, 0.68);
+    }
+
+    .dark-spec .swatch {
+      border-color: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .visual-compare {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      height: calc(100% - 126px);
+      margin-top: 24px;
+    }
+
+    .spec-compare {
+      height: calc(100% - 118px);
+    }
+
+    .spec-compare .theme-spec-panel {
+      min-height: 100%;
+    }
+
+    .spec-compare .font-sample {
+      font-size: 42px;
+    }
+
+    .style-board {
+      display: grid;
+      align-content: start;
+      gap: 22px;
+    }
+
+    .style-board h3 {
+      margin-bottom: 0;
+    }
+
+    .style-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .style-tags span {
+      padding: 7px 10px;
+      border: 1px solid rgba(8, 50, 79, 0.1);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .mini-home {
+      overflow: hidden;
+      min-height: 280px;
+      border: 1px solid rgba(8, 50, 79, 0.1);
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .mini-nav {
+      height: 34px;
+      border-bottom: 1px solid rgba(8, 50, 79, 0.08);
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .mini-hero {
+      display: grid;
+      align-content: center;
+      min-height: 144px;
+      padding: 20px;
+      background: linear-gradient(135deg, #e9f7fd, #fff);
+    }
+
+    .mini-title {
+      width: 72%;
+      height: 22px;
+      margin-bottom: 12px;
+      border-radius: 999px;
+      background: var(--navy-2);
+    }
+
+    .mini-copy {
+      width: 54%;
+      height: 9px;
+      border-radius: 999px;
+      background: #8da2b5;
+    }
+
+    .mini-modules {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 12px;
+      padding: 16px 20px 20px;
+    }
+
+    .mini-module {
+      min-height: 72px;
+      border: 1px solid rgba(8, 50, 79, 0.08);
+      border-radius: 8px;
+      background: #f7fbfe;
+    }
+
+    .style-board.dark-board {
+      background:
+        radial-gradient(circle at 92% 10%, rgba(255, 255, 255, 0.16), transparent 30%),
+        #071d2d;
+      color: #fff;
+    }
+
+    .dark-board h3 {
+      color: #fff;
+    }
+
+    .dark-board .style-tags span {
+      border-color: rgba(255, 255, 255, 0.16);
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .dark-board .mini-home {
+      border-color: rgba(255, 255, 255, 0.16);
+      background: #061a2b;
+    }
+
+    .dark-board .mini-nav {
+      border-bottom-color: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .dark-board .mini-hero {
+      background:
+        linear-gradient(270deg, rgba(255, 255, 255, 0.15), transparent 64%),
+        radial-gradient(ellipse at 95% 50%, rgba(255, 255, 255, 0.18), transparent 60%),
+        #071d2d;
+    }
+
+    .dark-board .mini-title {
+      background: #fff;
+    }
+
+    .dark-board .mini-copy {
+      background: rgba(255, 255, 255, 0.58);
+    }
+
+    .dark-board .mini-module {
+      border-color: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .style-board .swatch {
+      min-height: 82px;
+    }
+
+    .style-board .swatch-color {
+      height: 38px;
+    }
+
+    .style-board .swatch-text {
+      padding: 10px 12px;
+    }
+
+    .style-board .swatch strong {
+      font-size: 12px;
     }
 
     .flow {
@@ -441,11 +765,8 @@
     }
 
     .architecture {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 330px;
-      gap: 34px;
+      display: block;
       margin-top: 28px;
-      align-items: start;
     }
 
     .sitemap {
@@ -454,10 +775,11 @@
     }
 
     .node {
-      padding: 18px 20px;
+      padding: 15px 14px;
       border: 1px solid rgba(8, 50, 79, 0.12);
       border-radius: 10px;
       background: rgba(255, 255, 255, 0.78);
+      font-size: 14px;
       font-weight: 700;
       box-shadow: 0 10px 22px rgba(8, 50, 79, 0.05);
     }
@@ -482,8 +804,8 @@
 
     .node-row {
       display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 10px;
     }
 
     .site-branch {
@@ -493,15 +815,15 @@
 
     .site-branch ul {
       display: grid;
-      gap: 7px;
-      min-height: 168px;
+      gap: 6px;
+      min-height: 154px;
       margin: 0;
-      padding: 12px 12px 14px;
+      padding: 11px 10px 13px;
       border: 1px solid rgba(8, 50, 79, 0.09);
       border-radius: 10px;
       background: rgba(255, 255, 255, 0.58);
       color: var(--muted);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
       line-height: 1.35;
       list-style: none;
@@ -726,13 +1048,16 @@
       }
 
       .title-slide .brand-logo {
-        top: 58px;
+        top: 0;
         left: 24px;
+        width: 132px;
       }
 
       .grid-3,
       .flow,
       .split,
+      .theme-spec-grid,
+      .visual-compare,
       .architecture,
       .node-row,
       .timeline,
@@ -742,6 +1067,11 @@
 
       .prototype-frame {
         min-height: 460px;
+      }
+
+      .theme-spec-grid,
+      .visual-compare {
+        height: auto;
       }
     }
 
@@ -783,72 +1113,12 @@
     <section class="slide title-slide active">
       <div class="slide-inner">
         <img class="brand-logo" src="BSNL_logo_website/BSNL_logo_website/logo/BSNL_logo_bo_Main_web.png" alt="BioScience Network Lausanne">
-        <div class="kicker">Committee review</div>
+        <div class="kicker">Monthly Meeting</div>
         <h1>BSNL Website Redesign</h1>
-        <p class="lead">Homepage directions and content organization for a clearer, more maintainable BSNL website.</p>
+        <p class="title-author">Jiayi Tan &middot; Marketing Team</p>
         <div class="title-meta">
-          <span>BioScience Network Lausanne</span>
-          <span>Homepage prototype + information architecture</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide">
-      <div class="slide-inner">
-        <div class="kicker">Meeting goal</div>
-        <h2>What we need to decide</h2>
-        <p class="lead">The meeting should produce a direction we can turn into a WordPress theme and maintain with simple event and news updates.</p>
-        <div class="grid-3">
-          <article class="card">
-            <strong>Visual direction</strong>
-            <h3>Light community or premium scientific?</h3>
-            <p>Choose the tone that best represents BSNL to students, alumni, companies, and university stakeholders.</p>
-          </article>
-          <article class="card">
-            <strong>Homepage priorities</strong>
-            <h3>What should visitors see first?</h3>
-            <p>Clarify the order of mission, member value, upcoming events, highlights, and follow-up actions.</p>
-          </article>
-          <article class="card">
-            <strong>Maintenance model</strong>
-            <h3>Can nontechnical members update it?</h3>
-            <p>Use WordPress posts or custom content types for events, highlights, and team updates.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide">
-      <div class="slide-inner">
-        <div class="kicker">Homepage strategy</div>
-        <h2>From identity to action</h2>
-        <p class="lead">The homepage should first explain why BSNL matters, then move visitors toward specific events and recent activity.</p>
-        <div class="flow">
-          <article class="flow-step">
-            <span>01</span>
-            <h3>Hero promise</h3>
-            <p>Network, get inspired and find your ideal career path.</p>
-          </article>
-          <article class="flow-step">
-            <span>02</span>
-            <h3>Explore</h3>
-            <p>Career opportunities, new skills, professional network, and industry insight.</p>
-          </article>
-          <article class="flow-step">
-            <span>03</span>
-            <h3>Upcoming events</h3>
-            <p>Countdown for the next BSNL session plus a compact calendar preview.</p>
-          </article>
-          <article class="flow-step">
-            <span>04</span>
-            <h3>Highlights</h3>
-            <p>Recent activity records and event recaps in a visual carousel.</p>
-          </article>
-          <article class="flow-step">
-            <span>05</span>
-            <h3>Follow</h3>
-            <p>Simple social links and institutional footer information.</p>
-          </article>
+          <span>&copy; 2026 BioScience Network Lausanne</span>
+          <span>EPFL &middot; UNIL &middot; Lausanne, Switzerland</span>
         </div>
       </div>
     </section>
@@ -857,20 +1127,33 @@
       <div class="slide-inner">
         <div class="kicker">Direction 01</div>
         <h2>Light Community Hub</h2>
-        <div class="split">
-          <div>
+        <div class="theme-spec-grid">
+          <div class="theme-summary">
             <p class="lead">A bright, accessible homepage direction focused on events, membership value, and frequent updates.</p>
-            <div class="theme-points">
-              <div class="point"><strong>Best fit</strong><span>Main BSNL homepage and regular event communications.</span></div>
-              <div class="point"><strong>Strength</strong><span>Clear, approachable, easier for visitors to scan quickly.</span></div>
-              <div class="point"><strong>Risk</strong><span>Needs strong images for highlights to avoid feeling too generic.</span></div>
-            </div>
-            <div class="link-row">
-              <a class="button-link" href="bsnl-style-directions-version3.html#light-community-hub" target="_blank">Open live prototype</a>
-            </div>
+            <a class="button-link" href="bsnl-style-directions-version3.html#light-community-hub" target="_blank">Open live prototype</a>
           </div>
-          <div class="prototype-frame" data-preview="Light Community Hub prototype">
-            <iframe src="bsnl-style-directions-version3.html#light-community-hub" title="Light Community Hub prototype"></iframe>
+          <div class="theme-spec-panel">
+            <span class="spec-label">Primary typography</span>
+            <div class="font-sample">Montserrat<span>Clean geometric headings, lighter body text, and enough clarity for event-heavy content.</span></div>
+            <span class="spec-label">Core colors</span>
+            <div class="swatch-grid">
+              <div class="swatch">
+                <div class="swatch-color" style="background:#061a2b"></div>
+                <div class="swatch-text"><strong>BSNL Navy</strong><span>#061A2B</span></div>
+              </div>
+              <div class="swatch">
+                <div class="swatch-color" style="background:#f08a24"></div>
+                <div class="swatch-text"><strong>Action Orange</strong><span>#F08A24</span></div>
+              </div>
+              <div class="swatch">
+                <div class="swatch-color" style="background:#126da3"></div>
+                <div class="swatch-text"><strong>Science Blue</strong><span>#126DA3</span></div>
+              </div>
+              <div class="swatch">
+                <div class="swatch-color" style="background:#e8f4fb"></div>
+                <div class="swatch-text"><strong>Soft Blue</strong><span>#E8F4FB</span></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -880,20 +1163,33 @@
       <div class="slide-inner">
         <div class="kicker">Direction 02</div>
         <h2>Premium Scientific Forum</h2>
-        <div class="split">
-          <div>
+        <div class="theme-spec-grid">
+          <div class="theme-summary">
             <p class="lead">A darker, glossier institutional direction with stronger presence for flagship moments.</p>
-            <div class="theme-points">
-              <div class="point"><strong>Best fit</strong><span>Flagship event pages, sponsor-facing pages, and a more formal homepage.</span></div>
-              <div class="point"><strong>Strength</strong><span>Feels more distinctive, premium, and partner-ready.</span></div>
-              <div class="point"><strong>Risk</strong><span>Could feel heavier if the homepage needs to be updated often with everyday events.</span></div>
-            </div>
-            <div class="link-row">
-              <a class="button-link" href="bsnl-style-directions-version3.html#premium-scientific-forum" target="_blank">Open live prototype</a>
-            </div>
+            <a class="button-link" href="bsnl-style-directions-version3.html#premium-scientific-forum" target="_blank">Open live prototype</a>
           </div>
-          <div class="prototype-frame" data-preview="Premium Scientific Forum prototype">
-            <iframe src="bsnl-style-directions-version3.html#premium-scientific-forum" title="Premium Scientific Forum prototype"></iframe>
+          <div class="theme-spec-panel dark-spec">
+            <span class="spec-label">Primary typography</span>
+            <div class="font-sample">Montserrat<span>Same type system, but paired with larger contrast, darker fields, and sharper event presentation.</span></div>
+            <span class="spec-label">Core colors</span>
+            <div class="swatch-grid">
+              <div class="swatch">
+                <div class="swatch-color" style="background:#061a2b"></div>
+                <div class="swatch-text"><strong>Deep Navy</strong><span>#061A2B</span></div>
+              </div>
+              <div class="swatch">
+                <div class="swatch-color" style="background:#0f344e"></div>
+                <div class="swatch-text"><strong>Side Light</strong><span>#0F344E</span></div>
+              </div>
+              <div class="swatch">
+                <div class="swatch-color" style="background:#f08a24"></div>
+                <div class="swatch-text"><strong>Partner Orange</strong><span>#F08A24</span></div>
+              </div>
+              <div class="swatch">
+                <div class="swatch-color" style="background:#ffffff"></div>
+                <div class="swatch-text"><strong>High Contrast</strong><span>#FFFFFF</span></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -902,26 +1198,56 @@
     <section class="slide">
       <div class="slide-inner">
         <div class="kicker">Comparison</div>
-        <h2>How to evaluate the two themes</h2>
-        <div class="compare-table">
-          <div class="head">Criterion</div>
-          <div class="head">Light Community Hub</div>
-          <div class="head">Premium Scientific Forum</div>
-          <div class="criterion">First impression</div>
-          <div>Friendly, practical, student-facing.</div>
-          <div>Formal, polished, partner-facing.</div>
-          <div class="criterion">Event discovery</div>
-          <div>Very clear for regular updates and quick registration.</div>
-          <div>Strong for important sessions, less casual for smaller events.</div>
-          <div class="criterion">Brand presence</div>
-          <div>Subtle and accessible.</div>
-          <div>More memorable and institutional.</div>
-          <div class="criterion">Maintenance</div>
-          <div>Easier to keep consistent with mixed content quality.</div>
-          <div>Requires more image and copy discipline to stay premium.</div>
-          <div class="criterion">Recommended role</div>
-          <div>Main homepage direction.</div>
-          <div>Flagship event or sponsor-page direction.</div>
+        <h2>Typography and color comparison</h2>
+        <div class="visual-compare spec-compare">
+          <article class="theme-spec-panel">
+            <h3>Light Community Hub</h3>
+            <span class="spec-label">Primary typography</span>
+            <div class="font-sample">Montserrat<span>Clean geometric headings, lighter body text, and enough clarity for event-heavy content.</span></div>
+            <span class="spec-label">Core colors</span>
+            <div class="swatch-grid">
+              <div class="swatch">
+                <div class="swatch-color" style="background:#061a2b"></div>
+                <div class="swatch-text"><strong>BSNL Navy</strong><span>#061A2B</span></div>
+              </div>
+              <div class="swatch">
+                <div class="swatch-color" style="background:#f08a24"></div>
+                <div class="swatch-text"><strong>Action Orange</strong><span>#F08A24</span></div>
+              </div>
+              <div class="swatch">
+                <div class="swatch-color" style="background:#126da3"></div>
+                <div class="swatch-text"><strong>Science Blue</strong><span>#126DA3</span></div>
+              </div>
+              <div class="swatch">
+                <div class="swatch-color" style="background:#e8f4fb"></div>
+                <div class="swatch-text"><strong>Soft Blue</strong><span>#E8F4FB</span></div>
+              </div>
+            </div>
+          </article>
+          <article class="theme-spec-panel dark-spec">
+            <h3>Premium Scientific Forum</h3>
+            <span class="spec-label">Primary typography</span>
+            <div class="font-sample">Montserrat<span>Same type system, but paired with larger contrast, darker fields, and sharper event presentation.</span></div>
+            <span class="spec-label">Core colors</span>
+            <div class="swatch-grid">
+              <div class="swatch">
+                <div class="swatch-color" style="background:#061a2b"></div>
+                <div class="swatch-text"><strong>Deep Navy</strong><span>#061A2B</span></div>
+              </div>
+              <div class="swatch">
+                <div class="swatch-color" style="background:#0f344e"></div>
+                <div class="swatch-text"><strong>Side Light</strong><span>#0F344E</span></div>
+              </div>
+              <div class="swatch">
+                <div class="swatch-color" style="background:#f08a24"></div>
+                <div class="swatch-text"><strong>Partner Orange</strong><span>#F08A24</span></div>
+              </div>
+              <div class="swatch">
+                <div class="swatch-color" style="background:#ffffff"></div>
+                <div class="swatch-text"><strong>High Contrast</strong><span>#FFFFFF</span></div>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -939,10 +1265,8 @@
                 <div class="node">About Us</div>
                 <ul>
                   <li>Mission</li>
-                  <li>Our Team</li>
-                  <li>Alumni</li>
-                  <li>Recruitment</li>
                   <li>BSNL Bylaws</li>
+                  <li>Association history</li>
                 </ul>
               </div>
               <div class="site-branch">
@@ -960,116 +1284,43 @@
                 <div class="node">News</div>
                 <ul>
                   <li>Event highlights</li>
-                  <li>Announcements</li>
                   <li>Recruitment updates</li>
                   <li>Association news</li>
+                </ul>
+              </div>
+              <div class="site-branch">
+                <div class="node">Our Team</div>
+                <ul>
+                  <li>Committee</li>
+                  <li>Members</li>
+                  <li>Alumni</li>
                 </ul>
               </div>
               <div class="site-branch partnership">
                 <div class="node">Partnership</div>
                 <ul>
-                  <li>For companies</li>
                   <li>Sponsorship</li>
-                  <li>Company visits</li>
-                  <li>Speaker proposals</li>
                   <li>Collaboration form</li>
                 </ul>
               </div>
               <div class="site-branch">
                 <div class="node">Contact</div>
                 <ul>
-                  <li>General contact</li>
-                  <li>Collaboration inquiry</li>
+                  <li>General inquiry</li>
                   <li>Social media</li>
                 </ul>
               </div>
             </div>
           </div>
-          <aside class="content-types">
-            <h3>Reusable content</h3>
-            <ul>
-              <li>Events: date, location, registration link, status.</li>
-              <li>News/Highlights: recap, images, category, related event.</li>
-              <li>Team and alumni: role, group, contact/social link.</li>
-              <li>Partnership: sponsor profile, visit proposal, event connection.</li>
-            </ul>
-          </aside>
         </div>
       </div>
     </section>
 
-    <section class="slide">
-      <div class="slide-inner">
-        <div class="kicker">Maintenance model</div>
-        <h2>How updates should work after launch</h2>
-        <p class="lead">The design should not require committee members to edit page layouts for routine updates.</p>
-        <div class="timeline">
-          <article class="timeline-card">
-            <span>Events</span>
-            <p>Create a new event entry. Homepage automatically updates next session and calendar preview.</p>
-          </article>
-          <article class="timeline-card">
-            <span>Highlights</span>
-            <p>Publish an event recap or activity record. The highlights carousel updates from recent posts.</p>
-          </article>
-          <article class="timeline-card">
-            <span>Team</span>
-            <p>Update committee members from a structured team list rather than manually editing cards.</p>
-          </article>
-          <article class="timeline-card">
-            <span>Assets</span>
-            <p>Keep a shared image bank for event photography, partner logos, and recurring BSNL graphics.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide">
-      <div class="slide-inner">
-        <div class="kicker">Committee discussion</div>
-        <h2>Questions for the meeting</h2>
-        <div class="question-grid">
-          <article class="question">
-            <strong>Visual direction</strong>
-            <p>Which direction should become the main homepage style?</p>
-          </article>
-          <article class="question">
-            <strong>Content priority</strong>
-            <p>Are upcoming events and highlights the right homepage focus?</p>
-          </article>
-          <article class="question">
-            <strong>Navigation</strong>
-            <p>Do we agree on Home, About Us, Events, News, Our Team, Contact?</p>
-          </article>
-          <article class="question">
-            <strong>Ownership</strong>
-            <p>Who will maintain events, highlights, and team information?</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide title-slide">
-      <div class="slide-inner">
-        <div class="kicker">Next steps</div>
-        <h2>From direction to WordPress theme</h2>
-        <p class="lead">After the committee selects a direction, the prototype can be converted into a WordPress theme with editable Events, News/Highlights, Team, and footer content.</p>
-        <div class="link-row">
-          <a class="button-link" href="bsnl-style-directions-version3.html" target="_blank">Open homepage prototype</a>
-          <a class="button-link secondary" href="bsnl-style-directions-version3.html#light-community-hub" target="_blank">Light direction</a>
-          <a class="button-link secondary" href="bsnl-style-directions-version3.html#premium-scientific-forum" target="_blank">Premium direction</a>
-        </div>
-        <div class="title-meta">
-          <span>&copy; 2026 BioScience Network Lausanne</span>
-          <span>EPFL &middot; UNIL &middot; Lausanne, Switzerland</span>
-        </div>
-      </div>
-    </section>
   </main>
 
   <div class="nav" aria-label="Slide navigation">
     <button type="button" data-prev aria-label="Previous slide">&#8249;</button>
-    <div class="counter"><span data-current>1</span>/<span data-total>10</span></div>
+    <div class="counter"><span data-current>1</span>/<span data-total>5</span></div>
     <button type="button" data-next aria-label="Next slide">&#8250;</button>
   </div>
   <div class="progress"><span data-progress></span></div>
