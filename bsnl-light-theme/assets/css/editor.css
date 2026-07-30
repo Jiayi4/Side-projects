@@ -1,0 +1,29 @@
+@import url("theme.css");
+
+body,
+.editor-styles-wrapper {
+  color: var(--bsnl-ink);
+  background: #fff;
+  font-family: "Montserrat", Arial, sans-serif;
+}
+
+.editor-styles-wrapper {
+  padding: 24px;
+}
+
+.editor-styles-wrapper > * {
+  max-width: 1120px;
+}
+
+.editor-styles-wrapper .bsnl-page-with-nav {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.editor-styles-wrapper .bsnl-page-nav {
+  top: 20px;
+}
+
+.editor-styles-wrapper .bsnl-page-section {
+  min-height: 100px;
+}
