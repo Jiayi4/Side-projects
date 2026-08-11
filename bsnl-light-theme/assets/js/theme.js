@@ -1,19 +1,4 @@
 (function () {
-  document.querySelectorAll("[data-bsnl-back]").forEach(function (link) {
-    link.addEventListener("click", function (event) {
-      if (!document.referrer || window.history.length <= 1) return;
-
-      try {
-        if (new URL(document.referrer).origin !== window.location.origin) return;
-      } catch (error) {
-        return;
-      }
-
-      event.preventDefault();
-      window.history.back();
-    });
-  });
-
   document.querySelectorAll("[data-countdown]").forEach(function (box) {
     var target = new Date(box.dataset.countdown);
 

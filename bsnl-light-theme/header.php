@@ -41,11 +41,3 @@
     </form>
   </div>
 </nav>
-
-<?php if ((is_page() || is_singular('post')) && !is_front_page()) : ?>
-  <div class="bsnl-global-back">
-    <div class="bsnl-global-back-inner">
-      <a class="bsnl-page-back-link" href="<?php echo esc_url(bsnl_light_back_fallback_url()); ?>" data-bsnl-back><span class="bsnl-back-arrow" aria-hidden="true">&larr;</span><?php esc_html_e('Go back', 'bsnl-light'); ?></a>
-    </div>
-  </div>
-<?php endif; ?>

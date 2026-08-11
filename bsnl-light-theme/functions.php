@@ -32,8 +32,8 @@ add_action('after_setup_theme', 'bsnl_light_setup');
 function bsnl_light_assets(): void
 {
     wp_enqueue_style('bsnl-light-fonts', 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap', [], null);
-    wp_enqueue_style('bsnl-light-style', get_template_directory_uri() . '/assets/css/theme.css', [], '0.4.6');
-    wp_enqueue_script('bsnl-light-script', get_template_directory_uri() . '/assets/js/theme.js', [], '0.4.6', true);
+    wp_enqueue_style('bsnl-light-style', get_template_directory_uri() . '/assets/css/theme.css', [], '0.4.16');
+    wp_enqueue_script('bsnl-light-script', get_template_directory_uri() . '/assets/js/theme.js', [], '0.4.16', true);
     wp_localize_script('bsnl-light-script', 'bsnlLight', [
         'eventsUrl' => bsnl_light_page_url('Events'),
     ]);
@@ -429,6 +429,158 @@ function bsnl_light_back_fallback_url(): string
     return home_url('/');
 }
 
+function bsnl_light_page_link_by_title(string $title, string $anchor = ''): array
+{
+    return [
+        'label' => $title,
+        'url' => bsnl_light_page_url($title, $anchor),
+    ];
+}
+
+function bsnl_light_current_breadcrumb_item(string $label): array
+{
+    return [
+        'label' => $label,
+        'url' => '',
+    ];
+}
+
+function bsnl_light_event_page_slugs(): array
+{
+    return [
+        'life-science-career-day-lscd',
+        'faces-of-industrial-research-fir',
+        'famelab',
+        'biotech-chat',
+        'biotech-chats',
+        'workshops',
+        'company-visits',
+    ];
+}
+
+function bsnl_light_upcoming_event_page_slugs(): array
+{
+    return [
+        'career-paths-in-life-sciences-2026',
+        'soft-skills-negotiation-101-2026',
+        'alumni-apero-epfl-innovation-park-2026',
+        'life-science-career-day-2026',
+    ];
+}
+
+function bsnl_light_about_child_page_slugs(): array
+{
+    return [
+        'bsnl-bylaws',
+        '420-2',
+        'alumni',
+        'alumni-directory',
+        'our-team',
+    ];
+}
+
+function bsnl_light_breadcrumb_items_for_page(WP_Post $page): array
+{
+    $title = get_the_title($page);
+    $slug = (string) $page->post_name;
+    $items = [];
+    $parent_id = wp_get_post_parent_id($page);
+
+    while ($parent_id) {
+        $parent = get_post($parent_id);
+        if (!$parent instanceof WP_Post) {
+            break;
+        }
+
+        array_unshift($items, [
+            'label' => get_the_title($parent),
+            'url' => get_permalink($parent) ?: '',
+        ]);
+        $parent_id = wp_get_post_parent_id($parent);
+    }
+
+    if (!$items && in_array($slug, bsnl_light_about_child_page_slugs(), true)) {
+        $items[] = bsnl_light_page_link_by_title('About Us');
+    }
+
+    if (!$items && in_array($slug, bsnl_light_event_page_slugs(), true)) {
+        $items[] = bsnl_light_page_link_by_title('Events');
+    }
+
+    if (!$items && in_array($slug, bsnl_light_upcoming_event_page_slugs(), true)) {
+        $items[] = bsnl_light_page_link_by_title('Events');
+        $items[] = [
+            'label' => 'Upcoming',
+            'url' => bsnl_light_page_url('Events', 'upcoming'),
+        ];
+    }
+
+    if (!$items) {
+        return [];
+    }
+
+    $items[] = bsnl_light_current_breadcrumb_item($title);
+
+    return $items;
+}
+
+function bsnl_light_post_has_category_slug(int $post_id, string $slug): bool
+{
+    foreach (get_the_category($post_id) ?: [] as $category) {
+        if ($slug === $category->slug) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+function bsnl_light_breadcrumb_items_for_post(WP_Post $post): array
+{
+    if (bsnl_light_post_has_category_slug((int) $post->ID, 'upcoming-events')) {
+        return [
+            bsnl_light_page_link_by_title('Events'),
+            [
+                'label' => 'Upcoming',
+                'url' => bsnl_light_page_url('Events', 'upcoming'),
+            ],
+            bsnl_light_current_breadcrumb_item(get_the_title($post)),
+        ];
+    }
+
+    return [
+        bsnl_light_page_link_by_title('News'),
+        bsnl_light_current_breadcrumb_item(get_the_title($post)),
+    ];
+}
+
+function bsnl_light_page_kicker(): void
+{
+    ?>
+    <a class="bsnl-page-kicker" href="<?php echo esc_url(home_url('/')); ?>" aria-label="<?php esc_attr_e('Go to homepage', 'bsnl-light'); ?>"><span class="bsnl-page-dots" aria-hidden="true"><span></span><span></span><span></span></span>BioScience Network Lausanne</a>
+    <?php
+}
+
+function bsnl_light_breadcrumb_nav(array $items): void
+{
+    if (count($items) < 2) {
+        return;
+    }
+
+    ?>
+    <nav class="bsnl-page-breadcrumb" aria-label="<?php esc_attr_e('Page path', 'bsnl-light'); ?>">
+      <?php foreach ($items as $item_index => $item) : ?>
+        <?php if ($item_index > 0) : ?><span class="bsnl-page-breadcrumb-separator" aria-hidden="true">/</span><?php endif; ?>
+        <?php if (!empty($item['url']) && $item_index < count($items) - 1) : ?>
+          <a href="<?php echo esc_url((string) $item['url']); ?>"><?php echo esc_html((string) $item['label']); ?></a>
+        <?php else : ?>
+          <span class="bsnl-page-breadcrumb-current"><?php echo esc_html((string) $item['label']); ?></span>
+        <?php endif; ?>
+      <?php endforeach; ?>
+    </nav>
+    <?php
+}
+
 function bsnl_light_home_editor_content(WP_Post $page): string
 {
     $hero_title = get_the_title($page) ?: 'Network, get inspired and find your ideal career path.';
@@ -456,7 +608,7 @@ function bsnl_light_home_editor_content(WP_Post $page): string
     <p><?php echo esc_html($hero_text); ?></p>
     <nav class="bsnl-actions" aria-label="Homepage actions">
       <a class="bsnl-action-link" href="<?php echo esc_url($about_url); ?>">About Us <span>-&gt;</span></a>
-      <a class="bsnl-action-link" href="<?php echo esc_url($events_url); ?>">Check out recent events <span>-&gt;</span></a>
+      <a class="bsnl-action-link" href="<?php echo esc_url($events_url); ?>">Check our recent events <span>-&gt;</span></a>
       <a class="bsnl-action-link" href="<?php echo esc_url($newsletter_url); ?>"><?php echo esc_html(bsnl_light_home_text('secondary_button_text')); ?> <span>-&gt;</span></a>
     </nav>
   </div>
@@ -610,6 +762,38 @@ function bsnl_light_enable_editor_owned_content(): void
     update_option('bsnl_light_editor_ownership_version', $target_version);
 }
 add_action('init', 'bsnl_light_enable_editor_owned_content', 20);
+
+function bsnl_light_migrate_home_action_label_0414(): void
+{
+    $target_version = '0.4.14';
+    if ($target_version === (string) get_option('bsnl_light_home_action_label_version', '')) {
+        return;
+    }
+
+    $conflicts = get_option('bsnl_light_editor_ownership_conflicts', []);
+    $conflicts = is_array($conflicts) ? $conflicts : [];
+    $page = bsnl_light_home_page_for_editor_migration();
+
+    if (!$page instanceof WP_Post) {
+        $conflicts[] = 'Home page was not found; the action-label update was not applied.';
+    } else {
+        $content = (string) $page->post_content;
+        if (false !== strpos($content, 'Check out recent events')) {
+            $result = wp_update_post([
+                'ID' => (int) $page->ID,
+                'post_content' => str_replace('Check out recent events', 'Check our recent events', $content),
+            ], true);
+
+            if (is_wp_error($result)) {
+                $conflicts[] = 'Home page action label could not be updated: ' . $result->get_error_message();
+            }
+        }
+    }
+
+    update_option('bsnl_light_editor_ownership_conflicts', array_values(array_unique($conflicts)));
+    update_option('bsnl_light_home_action_label_version', $target_version);
+}
+add_action('init', 'bsnl_light_migrate_home_action_label_0414', 26);
 
 function bsnl_light_editor_ownership_admin_notice(): void
 {

@@ -936,14 +936,11 @@ a {
 }
 
 .bsnl-page.has-local-nav .bsnl-page-shell {
-  display: grid;
-  grid-template-columns: 190px minmax(0, 1fr);
-  gap: clamp(34px, 5vw, 76px);
   max-width: 1120px;
 }
 
 .bsnl-page.has-local-nav .bsnl-page-heading {
-  grid-column: 2;
+  grid-column: auto;
 }
 
 .bsnl-page-hero h1 {
@@ -963,11 +960,12 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   color: var(--bsnl-blue);
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.18em;
+  line-height: 1.55;
   text-transform: uppercase;
 }
 
@@ -979,83 +977,35 @@ a {
 .bsnl-page-breadcrumb {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin: -2px 0 16px;
+  align-items: center;
+  gap: 10px 12px;
+  margin: 0 0 32px;
   color: #728293;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1.65;
   text-transform: uppercase;
 }
 
 .bsnl-page-breadcrumb a {
   color: var(--bsnl-blue);
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  background-size: 0 1px;
+  transition: color 180ms ease, background-size 180ms ease;
 }
 
 .bsnl-page-breadcrumb a:hover,
 .bsnl-page-breadcrumb a:focus-visible {
   color: var(--bsnl-orange);
+  background-size: 100% 1px;
 }
 
-.bsnl-page-back-link {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  width: fit-content;
-  margin-bottom: 22px;
-  color: var(--bsnl-blue);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.bsnl-page-back-link:hover,
-.bsnl-page-back-link:focus-visible {
-  color: var(--bsnl-orange);
-}
-
-.bsnl-back-arrow {
-  font-size: 19px;
-  font-weight: 500;
-  line-height: 0.8;
-  transition: transform 180ms ease;
-}
-
-.bsnl-page-back-link:hover .bsnl-back-arrow,
-.bsnl-page-back-link:focus-visible .bsnl-back-arrow {
-  transform: translateX(-3px);
-}
-
-.bsnl-global-back {
-  padding: 28px clamp(22px, 7vw, 96px) 0;
-  background: #e9f7fd;
-}
-
-.bsnl-global-back-inner {
-  max-width: 920px;
-  margin: 0 auto;
-}
-
-.bsnl-global-back .bsnl-page-back-link {
-  margin: 0;
-}
-
-.bsnl-global-back + .bsnl-page .bsnl-page-hero {
-  padding-top: 30px;
-}
-
-@media (min-width: 981px) {
-  .bsnl-page-has-local-nav .bsnl-global-back-inner {
-    display: grid;
-    grid-template-columns: 190px minmax(0, 1fr);
-    gap: clamp(34px, 5vw, 76px);
-    max-width: 1120px;
-  }
-
-  .bsnl-page-has-local-nav .bsnl-global-back .bsnl-page-back-link {
-    grid-column: 2;
-  }
+.bsnl-page-breadcrumb-separator,
+.bsnl-page-breadcrumb-current {
+  color: #728293;
 }
 
 .bsnl-page-dots {
@@ -1096,6 +1046,29 @@ a {
 
 .bsnl-page-content.has-local-nav {
   max-width: 1120px;
+}
+
+/* Keep the page hero and local navigation on the same responsive left edge. */
+.bsnl-page.has-local-nav {
+  --bsnl-local-page-gutter: clamp(22px, 7vw, 96px);
+}
+
+.bsnl-page.has-local-nav .bsnl-page-hero {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.bsnl-page.has-local-nav .bsnl-page-shell,
+.bsnl-page-content.has-local-nav {
+  width: min(1120px, calc(100% - var(--bsnl-local-page-gutter) - var(--bsnl-local-page-gutter)));
+  max-width: none;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.bsnl-page-content.has-local-nav {
+  padding-right: 0;
+  padding-left: 0;
 }
 
 .bsnl-page-content a {
@@ -1392,9 +1365,8 @@ a {
 .bsnl-partner-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-auto-rows: 1fr;
-  align-items: stretch;
-  gap: 12px;
+  align-items: start;
+  gap: 16px clamp(20px, 3vw, 42px);
   margin-top: 28px;
 }
 
@@ -1407,21 +1379,22 @@ a {
   align-content: center;
   align-items: center;
   justify-items: start;
-  min-height: 104px;
-  padding: 18px 20px;
-  border: 1px solid rgba(18, 109, 163, 0.14);
-  border-radius: 8px;
-  background: #fff;
+  min-height: 76px;
+  padding: 12px 0;
+  border: 0;
+  border-bottom: 1px solid rgba(18, 109, 163, 0.14);
+  border-radius: 0;
+  background: transparent;
   color: inherit !important;
   height: 100%;
   text-align: left;
-  transition: border-color 160ms ease, box-shadow 160ms ease;
+  transition: border-color 160ms ease, transform 160ms ease;
 }
 
 .bsnl-partner-card:hover,
 .bsnl-partner-card:focus-visible {
-  border-color: rgba(240, 138, 36, 0.46);
-  box-shadow: 0 14px 32px rgba(8, 50, 79, 0.08);
+  border-color: rgba(240, 138, 36, 0.72);
+  transform: translateX(3px);
 }
 
 .bsnl-partner-logo {
@@ -1431,16 +1404,69 @@ a {
   place-items: center;
   width: 48px;
   height: 48px;
-  border: 1px solid rgba(16, 32, 47, 0.08);
-  border-radius: 10px;
-  background: var(--bsnl-paper);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 }
 
 .bsnl-partner-logo img {
   display: block;
-  max-width: 32px;
-  max-height: 32px;
+  max-width: 42px;
+  max-height: 42px;
   object-fit: contain;
+}
+
+.bsnl-company-logo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px clamp(30px, 4vw, 56px);
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(18, 109, 163, 0.14);
+}
+
+.bsnl-company-logo-link {
+  display: grid;
+  place-items: center start;
+  min-height: 108px;
+  padding: 8px 0;
+  border-bottom: 0;
+  background: transparent;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.bsnl-company-logo-link:hover,
+.bsnl-company-logo-link:focus-visible {
+  opacity: 0.76;
+  transform: translateX(3px);
+}
+
+.bsnl-company-logo-link.is-dark-logo {
+  padding-right: 0;
+  padding-left: 0;
+  background: transparent;
+}
+
+.bsnl-company-logo-link.is-dark-logo:hover,
+.bsnl-company-logo-link.is-dark-logo:focus-visible {
+  background: transparent;
+}
+
+.bsnl-company-logo-link.is-dark-logo img {
+  object-position: left center;
+}
+
+.bsnl-company-logo-link img {
+  display: block;
+  width: min(224px, 100%);
+  height: 72px;
+  max-width: 100%;
+  max-height: none;
+  object-fit: contain;
+  object-position: left center;
+  color: var(--bsnl-navy);
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .bsnl-partner-logo-pmi {
@@ -2698,6 +2724,12 @@ a {
     grid-column: 1;
   }
 
+  /* Match the page hero inset while the local sidebar becomes a horizontal bar. */
+  .bsnl-page-content.has-local-nav {
+    padding-right: clamp(22px, 7vw, 96px);
+    padding-left: clamp(22px, 7vw, 96px);
+  }
+
   .bsnl-upcoming-list {
     padding-top: 0;
   }
@@ -2855,8 +2887,8 @@ a {
   justify-items: start;
   column-gap: 16px;
   row-gap: 3px;
-  min-height: 104px;
-  padding: 18px 20px;
+  min-height: 76px;
+  padding: 12px 0;
   text-align: left;
 }
 
@@ -2901,15 +2933,15 @@ a {
     grid-template-rows: auto auto;
     justify-items: center;
     align-content: start;
-    min-height: 118px;
-    padding: 12px 8px;
+    min-height: 104px;
+    padding: 12px 0;
     text-align: center;
   }
 
   .bsnl-partner-card .bsnl-partner-logo {
     grid-column: 1;
     grid-row: 1;
-    width: 44px;
+    width: 48px;
     height: 44px;
     margin-bottom: 8px;
   }
@@ -3152,10 +3184,6 @@ a {
 
   .bsnl-next-card {
     min-height: 0;
-  }
-
-  .bsnl-global-back {
-    padding: 24px 22px 0;
   }
 
   .bsnl-page-hero {
@@ -3415,10 +3443,6 @@ a {
     aspect-ratio: 16 / 10;
   }
 
-  .bsnl-global-back {
-    padding: 22px 20px 0;
-  }
-
   .bsnl-page-hero {
     padding: 42px 20px 18px;
   }
@@ -3426,6 +3450,14 @@ a {
   .bsnl-page-hero h1,
   .bsnl-post-hero h1 {
     font-size: clamp(26px, 7.8vw, 34px);
+  }
+
+  .bsnl-page-breadcrumb {
+    gap: 7px 9px;
+    margin-bottom: 26px;
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    line-height: 1.8;
   }
 
   .bsnl-page-title-rule {
@@ -3621,4 +3653,23 @@ a {
     font-size: 10px;
     letter-spacing: 0.12em;
   }
+}
+
+/* Local-navigation pages share one responsive horizontal frame at every breakpoint. */
+.bsnl-page.has-local-nav .bsnl-page-hero {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.bsnl-page.has-local-nav .bsnl-page-shell,
+.bsnl-page-content.has-local-nav {
+  width: min(1120px, calc(100% - var(--bsnl-local-page-gutter) - var(--bsnl-local-page-gutter)));
+  max-width: none;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.bsnl-page-content.has-local-nav {
+  padding-right: 0;
+  padding-left: 0;
 }
