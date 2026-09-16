@@ -358,4 +358,56 @@
       setActive(activeIndex + 1);
     }, 4600);
   });
+
+  function followCardLink(link) {
+    if ("_blank" === link.target) {
+      window.open(link.href, "_blank", "noopener");
+      return;
+    }
+
+    window.location.assign(link.href);
+  }
+
+  function makeCardPartClickable(target, link, label) {
+    if (!target || !link || target.closest("a") || target.querySelector("a, button, input, select, textarea")) return;
+
+    target.classList.add("bsnl-card-link-target");
+    target.setAttribute("role", "link");
+    target.setAttribute("tabindex", "0");
+    target.setAttribute("aria-label", label);
+    target.addEventListener("click", function () {
+      followCardLink(link);
+    });
+    target.addEventListener("keydown", function (event) {
+      if ("Enter" !== event.key && " " !== event.key) return;
+      event.preventDefault();
+      followCardLink(link);
+    });
+  }
+
+  document.querySelectorAll(".bsnl-event-format-card").forEach(function (card) {
+    var link = card.querySelector(".bsnl-section-link[href]");
+    var title = card.querySelector("h3");
+    if (!link || !title) return;
+
+    var label = "Open " + title.textContent.trim();
+    makeCardPartClickable(card.querySelector("figure"), link, label);
+    makeCardPartClickable(title, link, label);
+    Array.from(card.querySelectorAll("p")).filter(function (paragraph) {
+      return !paragraph.querySelector("a");
+    }).forEach(function (paragraph) {
+      makeCardPartClickable(paragraph, link, label);
+    });
+  });
+
+  document.querySelectorAll(".bsnl-news-card, .bsnl-news-list-item").forEach(function (card) {
+    var link = card.querySelector("h3 a[href]");
+    if (!link) return;
+
+    var label = "Read " + link.textContent.trim();
+    makeCardPartClickable(card.querySelector(".bsnl-news-image, .bsnl-news-list-image"), link, label);
+    card.querySelectorAll("p").forEach(function (paragraph) {
+      makeCardPartClickable(paragraph, link, label);
+    });
+  });
 }());

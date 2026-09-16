@@ -32,8 +32,8 @@ add_action('after_setup_theme', 'bsnl_light_setup');
 function bsnl_light_assets(): void
 {
     wp_enqueue_style('bsnl-light-fonts', 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap', [], null);
-    wp_enqueue_style('bsnl-light-style', get_template_directory_uri() . '/assets/css/theme.css', [], '0.4.16');
-    wp_enqueue_script('bsnl-light-script', get_template_directory_uri() . '/assets/js/theme.js', [], '0.4.16', true);
+    wp_enqueue_style('bsnl-light-style', get_template_directory_uri() . '/assets/css/theme.css', [], '0.4.27');
+    wp_enqueue_script('bsnl-light-script', get_template_directory_uri() . '/assets/js/theme.js', [], '0.4.27', true);
     wp_localize_script('bsnl-light-script', 'bsnlLight', [
         'eventsUrl' => bsnl_light_page_url('Events'),
     ]);
@@ -136,7 +136,7 @@ function bsnl_light_register_block_patterns(): void
         'title' => __('BSNL page with section navigation', 'bsnl-light'),
         'description' => __('Editable BSNL page structure with navigation and two styled sections.', 'bsnl-light'),
         'categories' => ['bsnl'],
-        'content' => '<!-- wp:group {"className":"bsnl-page-with-nav","layout":{"type":"default"}} --><div class="wp-block-group bsnl-page-with-nav"><!-- wp:html --><nav class="bsnl-page-nav" aria-label="Page sections"><a href="#overview">Overview</a><a href="#details">Details</a></nav><!-- /wp:html --><!-- wp:group {"className":"bsnl-page-sections","layout":{"type":"default"}} --><div class="wp-block-group bsnl-page-sections"><!-- wp:group {"anchor":"overview","className":"bsnl-page-section","layout":{"type":"default"}} --><div id="overview" class="wp-block-group bsnl-page-section"><!-- wp:heading --><h2 class="wp-block-heading">Overview</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Add the overview text here.</p><!-- /wp:paragraph --></div><!-- /wp:group --><!-- wp:group {"anchor":"details","className":"bsnl-page-section","layout":{"type":"default"}} --><div id="details" class="wp-block-group bsnl-page-section"><!-- wp:heading --><h2 class="wp-block-heading">Details</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Add the section text here.</p><!-- /wp:paragraph --></div><!-- /wp:group --></div><!-- /wp:group --></div><!-- /wp:group -->',
+        'content' => '<!-- wp:group {"className":"bsnl-page-with-nav","layout":{"type":"default"}} --><div class="wp-block-group bsnl-page-with-nav"><!-- wp:html --><nav class="bsnl-page-nav" aria-label="Page sections"><a href="#details">Details</a></nav><!-- /wp:html --><!-- wp:group {"className":"bsnl-page-sections","layout":{"type":"default"}} --><div class="wp-block-group bsnl-page-sections"><!-- wp:group {"anchor":"details","className":"bsnl-page-section","layout":{"type":"default"}} --><div id="details" class="wp-block-group bsnl-page-section"><!-- wp:heading --><h2 class="wp-block-heading">Details</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Add the section text here.</p><!-- /wp:paragraph --></div><!-- /wp:group --></div><!-- /wp:group --></div><!-- /wp:group -->',
     ]);
 
     register_block_pattern('bsnl/standard-section', [
@@ -503,8 +503,8 @@ function bsnl_light_breadcrumb_items_for_page(WP_Post $page): array
         $items[] = bsnl_light_page_link_by_title('About Us');
     }
 
-    if (!$items && in_array($slug, bsnl_light_event_page_slugs(), true)) {
-        $items[] = bsnl_light_page_link_by_title('Events');
+    if (in_array($slug, bsnl_light_event_page_slugs(), true)) {
+        return [bsnl_light_page_link_by_title('Events')];
     }
 
     if (!$items && in_array($slug, bsnl_light_upcoming_event_page_slugs(), true)) {
@@ -515,11 +515,10 @@ function bsnl_light_breadcrumb_items_for_page(WP_Post $page): array
         ];
     }
 
-    if (!$items) {
-        return [];
-    }
-
-    $items[] = bsnl_light_current_breadcrumb_item($title);
+    $items[] = [
+        'label' => $title,
+        'url' => get_permalink($page) ?: '',
+    ];
 
     return $items;
 }
@@ -544,13 +543,11 @@ function bsnl_light_breadcrumb_items_for_post(WP_Post $post): array
                 'label' => 'Upcoming',
                 'url' => bsnl_light_page_url('Events', 'upcoming'),
             ],
-            bsnl_light_current_breadcrumb_item(get_the_title($post)),
         ];
     }
 
     return [
         bsnl_light_page_link_by_title('News'),
-        bsnl_light_current_breadcrumb_item(get_the_title($post)),
     ];
 }
 
@@ -563,7 +560,7 @@ function bsnl_light_page_kicker(): void
 
 function bsnl_light_breadcrumb_nav(array $items): void
 {
-    if (count($items) < 2) {
+    if ([] === $items) {
         return;
     }
 
@@ -571,7 +568,7 @@ function bsnl_light_breadcrumb_nav(array $items): void
     <nav class="bsnl-page-breadcrumb" aria-label="<?php esc_attr_e('Page path', 'bsnl-light'); ?>">
       <?php foreach ($items as $item_index => $item) : ?>
         <?php if ($item_index > 0) : ?><span class="bsnl-page-breadcrumb-separator" aria-hidden="true">/</span><?php endif; ?>
-        <?php if (!empty($item['url']) && $item_index < count($items) - 1) : ?>
+        <?php if (!empty($item['url'])) : ?>
           <a href="<?php echo esc_url((string) $item['url']); ?>"><?php echo esc_html((string) $item['label']); ?></a>
         <?php else : ?>
           <span class="bsnl-page-breadcrumb-current"><?php echo esc_html((string) $item['label']); ?></span>
@@ -1062,6 +1059,99 @@ function bsnl_light_migrate_contact_page_045(): void
 }
 add_action('init', 'bsnl_light_migrate_contact_page_045', 25);
 
+function bsnl_light_migrate_events_navigation_0417(): void
+{
+    $target_version = '0.4.18';
+    if ($target_version === (string) get_option('bsnl_light_events_navigation_version', '')) {
+        return;
+    }
+
+    $page = get_page_by_path('events', OBJECT, 'page');
+    $conflicts = get_option('bsnl_light_editor_ownership_conflicts', []);
+    $conflicts = is_array($conflicts) ? $conflicts : [];
+
+    if (!$page instanceof WP_Post) {
+        $conflicts[] = 'Events page could not be found for the 0.4.18 navigation update.';
+    } else {
+        $content = (string) $page->post_content;
+        $updated = preg_replace_callback(
+            '/(<nav\\b[^>]*class=("|\')[^"\']*bsnl-page-nav[^"\']*\\2[^>]*>)(.*?)(<\\/nav>)/is',
+            static function (array $match): string {
+                $nav = preg_replace('/<a\\b[^>]*href=("|\')#overview\\1[^>]*>.*?<\\/a>/is', '', $match[3]);
+                return $match[1] . trim((string) $nav) . $match[4];
+            },
+            $content,
+            1
+        );
+
+        if (null === $updated) {
+            $conflicts[] = 'Events navigation could not be parsed for the 0.4.18 update.';
+        } elseif ($updated !== $content) {
+            $result = wp_update_post([
+                'ID' => (int) $page->ID,
+                'post_content' => $updated,
+            ], true);
+            if (is_wp_error($result)) {
+                $conflicts[] = sprintf('Events navigation could not be updated: %s', $result->get_error_message());
+            }
+        }
+    }
+
+    update_option('bsnl_light_editor_ownership_conflicts', array_values(array_unique($conflicts)));
+    update_option('bsnl_light_events_navigation_version', $target_version);
+}
+add_action('init', 'bsnl_light_migrate_events_navigation_0417', 26);
+
+function bsnl_light_migrate_events_calendar_0424(): void
+{
+    $target_version = '0.4.24';
+    if ($target_version === (string) get_option('bsnl_light_events_calendar_version', '')) {
+        return;
+    }
+
+    $page = get_page_by_path('events', OBJECT, 'page');
+    $conflicts = get_option('bsnl_light_editor_ownership_conflicts', []);
+    $conflicts = is_array($conflicts) ? $conflicts : [];
+
+    if (!$page instanceof WP_Post) {
+        $conflicts[] = 'Events page could not be found for the 0.4.24 calendar update.';
+    } else {
+        $content = (string) $page->post_content;
+        if (false !== strpos($content, '[bsnl_upcoming_events_calendar')) {
+            $updated = preg_replace(
+                '/\[bsnl_upcoming_events_calendar(?:\s+[^\]]*)?\]/i',
+                '[bsnl_upcoming_events_calendar]',
+                $content,
+                1
+            );
+        } else {
+            $updated = preg_replace(
+                '/(<section\\b[^>]*\\bid=("|\')upcoming\\2[^>]*>\\s*<h2\\b[^>]*>[\\s\\S]*?<\\/h2>)[\\s\\S]*?(<\\/section>\\s*<section\\b)/i',
+                '$1' . "\n[bsnl_upcoming_events_calendar]\n" . '$3',
+                $content,
+                1
+            );
+
+        }
+
+        if (null === $updated) {
+            $conflicts[] = 'Events calendar could not be migrated to the dynamic calendar in 0.4.24.';
+        } elseif ($updated !== $content) {
+            $result = wp_update_post([
+                'ID' => (int) $page->ID,
+                'post_content' => $updated,
+            ], true);
+            if (is_wp_error($result)) {
+                $conflicts[] = sprintf('Events calendar could not be updated: %s', $result->get_error_message());
+            }
+        }
+    }
+
+    update_option('bsnl_light_editor_ownership_conflicts', array_values(array_unique($conflicts)));
+    update_option('bsnl_light_events_calendar_version', $target_version);
+}
+add_action('init', 'bsnl_light_migrate_events_calendar_0424', 27);
+
 function bsnl_light_event_anchor_map(): array
 {
     return [
@@ -1362,7 +1452,7 @@ function bsnl_light_event_from_posts(int $limit): array
     $query = new WP_Query([
         'post_type' => 'post',
         'post_status' => 'publish',
-        'posts_per_page' => $limit,
+        'posts_per_page' => $limit > 0 ? $limit : -1,
         'ignore_sticky_posts' => true,
         'no_found_rows' => true,
         'category_name' => 'upcoming-events',
@@ -1431,7 +1521,7 @@ function bsnl_light_event_from_events_page(int $limit): array
             'url' => $url,
         ];
 
-        if (count($events) >= $limit) {
+        if ($limit > 0 && count($events) >= $limit) {
             break;
         }
     }
@@ -1465,7 +1555,7 @@ function bsnl_light_get_upcoming_events(int $limit = 4): array
         return strtotime((string) ($a['datetime'] ?? '')) <=> strtotime((string) ($b['datetime'] ?? ''));
     });
 
-    return array_slice($events, 0, $limit);
+    return $limit > 0 ? array_slice($events, 0, $limit) : $events;
 }
 
 function bsnl_light_event_timestamp(array $event): int
@@ -1505,8 +1595,8 @@ function bsnl_light_render_calendar_row(array $event): string
 
 function bsnl_light_upcoming_events_calendar_shortcode(array $atts = []): string
 {
-    $atts = shortcode_atts(['limit' => 4], $atts, 'bsnl_upcoming_events_calendar');
-    $events = bsnl_light_get_upcoming_events(max(1, (int) $atts['limit']));
+    $atts = shortcode_atts(['limit' => 0], $atts, 'bsnl_upcoming_events_calendar');
+    $events = bsnl_light_get_upcoming_events(max(0, (int) $atts['limit']));
 
     ob_start();
     ?>
@@ -1900,7 +1990,7 @@ function bsnl_light_news_listing_shortcode(array $atts = []): string
           $author = bsnl_light_display_author(get_the_ID());
           ?>
           <article class="bsnl-news-list-item">
-            <div class="bsnl-news-list-image" <?php if ($image) : ?>style="background-image:url('<?php echo esc_url($image); ?>')"<?php endif; ?> aria-hidden="true"></div>
+            <a class="bsnl-news-image-link" href="<?php echo esc_url(get_permalink()); ?>" aria-label="<?php echo esc_attr(sprintf(__('Read %s', 'bsnl-light'), get_the_title())); ?>"><div class="bsnl-news-list-image" <?php if ($image) : ?>style="background-image:url('<?php echo esc_url($image); ?>')"<?php endif; ?> aria-hidden="true"></div></a>
             <div class="bsnl-news-list-body">
               <div class="bsnl-news-list-meta"><span><?php echo esc_html($label); ?></span><span><?php echo esc_html(get_the_date('j M Y')); ?></span></div>
               <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
@@ -2056,7 +2146,7 @@ function bsnl_light_home_news_shortcode(): string
               $category = get_the_category();
               $label = $category ? $category[0]->name : 'News';
               ?>
-              <article class="bsnl-news-card"><div class="bsnl-news-image" style="background-image:url('<?php echo esc_url($image); ?>')" aria-hidden="true"></div><div class="bsnl-news-body"><div class="bsnl-news-meta"><span><?php echo esc_html($label); ?></span><span><?php echo esc_html(get_the_date('j M Y')); ?></span></div><h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3><p><?php echo esc_html(wp_trim_words(get_the_excerpt(), 18, '')); ?></p></div></article>
+              <article class="bsnl-news-card"><a class="bsnl-news-image-link" href="<?php echo esc_url(get_permalink()); ?>" aria-label="<?php echo esc_attr(sprintf(__('Read %s', 'bsnl-light'), get_the_title())); ?>"><div class="bsnl-news-image" style="background-image:url('<?php echo esc_url($image); ?>')" aria-hidden="true"></div></a><div class="bsnl-news-body"><div class="bsnl-news-meta"><span><?php echo esc_html($label); ?></span><span><?php echo esc_html(get_the_date('j M Y')); ?></span></div><h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3><p><?php echo esc_html(wp_trim_words(get_the_excerpt(), 18, '')); ?></p></div></article>
             <?php endwhile; wp_reset_postdata(); ?>
           <?php else : ?>
             <?php foreach ($fallback as $item) : ?>

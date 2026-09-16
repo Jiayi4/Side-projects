@@ -1,0 +1,4 @@
+.bsnl-company-logo-grid.bsnl-dynamic-collaborators .bsnl-company-logo-link img {
+  width: min(var(--bsnl-collaborator-logo-width), 100%);
+  height: var(--bsnl-collaborator-logo-height);
+}

@@ -89,7 +89,7 @@ Important:
 - Keep this shortcode in the Upcoming section of the Events page:
 
 ```text
-[bsnl_upcoming_events_calendar limit="4"]
+[bsnl_upcoming_events_calendar]
 ```
 
 ## 4. News and Highlights
@@ -146,7 +146,7 @@ Button wording protocol:
 Do not delete this shortcode from the Upcoming section:
 
 ```text
-[bsnl_upcoming_events_calendar limit="4"]
+[bsnl_upcoming_events_calendar]
 ```
 
 ## 6. Event Detail Pages
@@ -242,7 +242,7 @@ WordPress location:
 Content that can be updated:
 
 - Flagship event partnership descriptions and external links.
-- Year-round collaborator names, URLs, and logo images.
+- Year-round collaborator names, URLs, logo images, and display order through `Collaborators` in the WordPress sidebar after the BSNL Collaborators plugin is installed.
 - Company visit host names and descriptions.
 - Inquiry/contact call-to-action.
 
@@ -254,6 +254,16 @@ Current page sections:
 - `Enquiry`
 
 Keep the Partnership page focused on year-round collaboration. For sponsor and exhibitor lists specific to Life Science Career Day or Faces of Industrial Research, link to the relevant event website instead of duplicating those lists here.
+
+To add a collaborator after the one-time import:
+
+1. Go to `Collaborators > Add New`.
+2. Add the organisation name as the title.
+3. Set an official logo as the Featured image.
+4. Add its website in `Collaborator details`.
+5. Publish. Use `Page Attributes > Order` to control its position.
+
+To resize all collaborator logos together, go to `Collaborators > Logo display settings`. The logo width and height apply to every collaborator and preserve image proportions.
 
 ## 11. Contact
 
