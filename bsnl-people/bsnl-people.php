@@ -3,7 +3,7 @@
  * Plugin Name: BSNL People
  * Plugin URI: https://bsnl.ch/
  * Description: Manages BSNL board members, members, and alumni from one People directory.
- * Version: 1.3.2
+ * Version: 1.3.3
  * Author: BioScience Network Lausanne
  * Text Domain: bsnl-people
  */
@@ -542,7 +542,7 @@ function bsnl_people_enqueue_styles(): void
         'bsnl-people',
         plugin_dir_url(__FILE__) . 'assets/css/people.css',
         [],
-        '1.3.2'
+        '1.3.3'
     );
 }
 add_action('wp_enqueue_scripts', 'bsnl_people_enqueue_styles', 20);

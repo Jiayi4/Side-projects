@@ -14,3 +14,34 @@
   width: fit-content;
   margin-top: 5px;
 }
+
+.bsnl-person-card h3 {
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.bsnl-person-card > a {
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+@media (max-width: 980px) {
+  .bsnl-person-card h3 {
+    font-size: 16px;
+  }
+
+  .bsnl-person-card > a {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 680px) {
+  .bsnl-person-card h3 {
+    font-size: 14px;
+    line-height: 1.16;
+  }
+
+  .bsnl-person-card > a {
+    font-size: 9px;
+  }
+}
