@@ -68,20 +68,32 @@ The Partnership page text and flagship-event links remain editable under `Pages 
 
 ## 4. Team and Alumni
 
-**Where:** `Pages > About Us`
+**Where:** `People` in the WordPress sidebar
 
-The Current Board, Members, Alumni, Recruitment, and Gallery sections live inside About Us. They are not separate WordPress pages.
+Board members, Members, and Alumni are managed as individual People records. Do not add or move people by editing the About Us page HTML.
 
-To update a team member:
+To add or update a person:
 
-1. Go to `Pages > About Us > Edit`.
-2. Find the correct existing person card.
-3. Replace the photo, name, role, and LinkedIn URL as needed.
-4. To add a person, duplicate an existing card first, then replace all of its content. This preserves the site layout on desktop and mobile.
-5. To remove a person, delete that complete card only.
-6. Update and check both desktop and mobile views.
+1. Go to `People > Add New`, or open an existing record under `People > All People`.
+2. Add the person's name as the title.
+3. Set their portrait as the **Featured image**.
+4. Complete `Role` and `LinkedIn URL` under `Person details`.
+5. Choose `Board`, `Members`, or `Alumni` under `Group`.
+6. Publish or update the record.
 
-Use the same method for the Alumni section. Keep names, roles, and descriptions concise. Do not change the card classes, image wrappers, section IDs, or surrounding grid markup.
+To move a person, change their `Group` and update the record. From `People > All People`, one or more records can also be selected and moved together with the `Move to Board`, `Move to Members`, or `Move to Alumni` bulk action.
+
+Use the Group dropdown above the `All People` table to display only Board, Members, or Alumni.
+
+When `Group` is Alumni, choose `Board Alumni` or `Member Alumni` under `Alumni category`. The second dropdown above the `All People` table can filter these two categories. Existing imported regular Alumni are treated as Member Alumni.
+
+Members are arranged alphabetically by first name. Alumni use the final year entered in `BSNL years` as the leaving year and are arranged newest to oldest. Alumni without a usable four-digit year appear last; people with the same leaving year are sorted by first name. Use `Custom alphabetical sort name` only when a name needs a custom alphabetical position. Board members use `Page Attributes > Order`, with lower numbers displayed first.
+
+The About Us page contains the People shortcodes that position each group. Do not remove them unless intentionally removing that group from the page.
+
+For a one-time migration of the old Alumni directory, go to `People > Import existing people`, select the legacy Alumni page, and run `Scan and preview Alumni`. Check every detected name and field before confirming. The migration stores available affiliation, BSNL years, former role, testimonial, LinkedIn, and photo information but does not change the public Alumni page.
+
+After migration, use `Legacy People photos > Import legacy photos into Media Library` on the same screen to convert detected legacy photo URLs into Featured images. Existing Featured images are skipped.
 
 Recruitment announcements should be created as posts with the `Recruitment` category. They can then be linked from the Recruitment section and also appear in News.
 

@@ -1,0 +1,16 @@
+.bsnl-person-placeholder {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  color: #126da3;
+  background: #edf7fb;
+  font-size: clamp(24px, 4vw, 48px);
+  font-weight: 800;
+}
+
+.bsnl-people-alumni .bsnl-alumni-entry span a {
+  display: block;
+  width: fit-content;
+  margin-top: 5px;
+}
